@@ -7,7 +7,7 @@ type BaseButtonProps = {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
-const BaseButton = (props: BaseButtonProps) => (
+const Button = (props: BaseButtonProps) => (
   <div
     className={twMerge('w-fit cursor-pointer rounded-full bg-white px-6 py-1 font-bold text-black', props.className)}
     onClick={props.onClick}
@@ -16,4 +16,4 @@ const BaseButton = (props: BaseButtonProps) => (
   </div>
 );
 
-export default BaseButton;
+export default Button;

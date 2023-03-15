@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import Container from '../../Container';
-import NavbarLink from '../../NavbarLink';
+import Container from '../../base/Container';
+import NavbarLink from './NavbarLink';
 
 export function Header() {
   return (
@@ -13,8 +13,8 @@ export function Header() {
 
         <nav className="flex gap-6">
           <NavbarLink href="/">Home</NavbarLink>
-
-          <NavbarLink href="/connect-4">Connect 4</NavbarLink>
+          <NavbarLink href="/games">Games</NavbarLink>
+          <NavbarLink href="/l">Links</NavbarLink>
         </nav>
       </Container>
     </header>
