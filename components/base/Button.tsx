@@ -9,7 +9,10 @@ type BaseButtonProps = {
 
 const Button = (props: BaseButtonProps) => (
   <div
-    className={twMerge('w-fit cursor-pointer rounded-full bg-white px-6 py-1 font-bold text-black', props.className)}
+    className={twMerge(
+      'w-fit cursor-pointer rounded-full bg-white px-6 py-1 font-bold text-black transition-colors duration-300 hover:bg-amber-300',
+      props.className,
+    )}
     onClick={props.onClick}
   >
     {props.children}

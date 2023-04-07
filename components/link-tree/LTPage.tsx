@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import IconLink from './IconLink';
-import CustomLink from './CustomLink';
+import LTIconLink from './LTIconLink';
+import LTCustomLink from './LTCustomLink';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import ShareModal from './ShareModal';
+import LTShareModal from './LTShareModal';
 
-type LinkPageProps = {
+type LTPageProps = {
   icons: Array<{
     href: string;
     icon: IconProp;
@@ -24,7 +24,7 @@ type LinkPageProps = {
   wallpaperSrc: string;
 };
 
-const LinkPage = (props: LinkPageProps) => {
+const LTPage = (props: LTPageProps) => {
   const [shareModal, setShareModal] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ const LinkPage = (props: LinkPageProps) => {
         <FontAwesomeIcon className="mmd:h-10" icon={faShareAlt} /> <span className="hidden md:inline-block">Share</span>
       </div>
 
-      {shareModal && <ShareModal close={() => setShareModal(false)} />}
+      {shareModal && <LTShareModal close={() => setShareModal(false)} />}
 
       <div className="relative mx-6 flex h-full min-h-screen w-full max-w-2xl flex-col px-6 py-12">
         <div className="flex w-full flex-[1] flex-col items-center justify-between gap-10">
@@ -61,13 +61,13 @@ const LinkPage = (props: LinkPageProps) => {
 
           <div className="flex h-8 gap-6">
             {props.icons.map((icon, index) => (
-              <IconLink href={icon.href} key={index} icon={icon.icon} />
+              <LTIconLink href={icon.href} key={index} icon={icon.icon} />
             ))}
           </div>
 
           <div className="flex w-full flex-[1] flex-col gap-6">
             {props.links.map((link, index) => (
-              <CustomLink
+              <LTCustomLink
                 key={index}
                 href={link.href}
                 className={link.className}
@@ -75,11 +75,11 @@ const LinkPage = (props: LinkPageProps) => {
                 type={link.type}
               >
                 {link.children}
-              </CustomLink>
+              </LTCustomLink>
             ))}
           </div>
 
-          <Link href="/" className="mt-auto justify-self-end text-2xl font-bold text-slate-300">
+          <Link href="/" className="mt-auto justify-self-end text-2xl font-bold text-slate-200">
             <h2>Kayn.ooo</h2>
           </Link>
         </div>
@@ -88,4 +88,4 @@ const LinkPage = (props: LinkPageProps) => {
   );
 };
 
-export default LinkPage;
+export default LTPage;

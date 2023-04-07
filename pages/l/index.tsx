@@ -9,11 +9,11 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import LinkPage from '../../components/link-tree/LinkPage';
+import LTPage from '../../components/link-tree/LTPage';
 
 const KaynoooLinkPage = () => {
   return (
-    <LinkPage
+    <LTPage
       title="Kevyn Fyleyssant"
       profileSrc="/link-tree/profile.jpeg"
       wallpaperSrc={`/link-tree/wallpaper.jpg`}

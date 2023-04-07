@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import React from 'react';
 
-type IconLinkProps = {
+type LTIconLinkProps = {
   className?: string;
   href: string;
   icon: IconProp;
 };
 
-const IconLink = (props: IconLinkProps) => {
+const LTIconLink = (props: LTIconLinkProps) => {
   return (
     <Link className="h-full" href={props.href}>
       <FontAwesomeIcon className="h-full" icon={props.icon} color="#fff" />
@@ -17,4 +17,4 @@ const IconLink = (props: IconLinkProps) => {
   );
 };
 
-export default IconLink;
+export default LTIconLink;

@@ -5,6 +5,7 @@ import Button from '../base/Button';
 type SimpleBoardGameProps = {
   auto: boolean;
   grid: Array<Array<number>>;
+  gridClassName: string;
   message: string | null;
   onMouseOverBloc?: (x: number, y: number) => void;
   onMouseOverCol?: (x: number) => void;
@@ -24,8 +25,7 @@ type SimpleBoardGameProps = {
 const SimpleBoardGame = (props: SimpleBoardGameProps) => (
   <>
     <div
-      className="relative mx-auto grid w-full max-w-lg"
-      style={{ gridTemplateColumns: `repeat(${props.grid.length}, minmax(0, 1fr))` }}
+      className={twMerge('relative mx-auto grid w-full max-w-lg grid-cols-2', props.gridClassName)}
       onMouseOut={() => props.setPlaceholder({ x: -2, y: -2 })}
     >
       {props.grid.map((col, x) => (
@@ -33,7 +33,6 @@ const SimpleBoardGame = (props: SimpleBoardGameProps) => (
           className="flex w-full flex-col"
           key={x}
           onMouseOver={() => (props.onMouseOverCol ? props.onMouseOverCol(x) : null)}
-          onClick={() => (props.auto ? null : props.place(x, -1))}
         >
           {col.map((bloc, y) => (
             <div
@@ -45,7 +44,7 @@ const SimpleBoardGame = (props: SimpleBoardGameProps) => (
                   'bg-slate-600',
               )}
               onMouseOver={() => (props.onMouseOverBloc ? props.onMouseOverBloc(x, y) : null)}
-              onClick={() => (props.auto ? null : props.place(x, y))}
+              onMouseUp={() => (props.auto ? null : props.place(x, y))}
             >
               {bloc !== 0 && props.playerProp[bloc - 1]?.bloc}
             </div>

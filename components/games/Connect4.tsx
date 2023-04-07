@@ -6,6 +6,7 @@ import { checkWin } from '../../utils/board';
 
 type Connect4Props = {
   auto: boolean;
+  gridClassName: string;
   height: number;
   length: number;
   width: number;
@@ -94,6 +95,7 @@ const Connect4 = (props: Connect4Props) => {
     <SimpleBoardGame
       auto={props.auto}
       grid={grid}
+      gridClassName={props.gridClassName}
       message={message}
       setPlaceholder={setPlaceholder}
       place={place}
@@ -102,12 +104,12 @@ const Connect4 = (props: Connect4Props) => {
       player={player}
       playerProp={{
         0: {
-          bloc: <div className="h-full w-full rounded-full bg-red-300" />,
-          textColor: 'text-red-300',
+          bloc: <div className="h-full w-full rounded-full bg-amber-300" />,
+          textColor: 'text-amber-300',
         },
         1: {
-          bloc: <div className="h-full w-full rounded-full bg-blue-300" />,
-          textColor: 'text-blue-300',
+          bloc: <div className="h-full w-full rounded-full bg-indigo-300" />,
+          textColor: 'text-indigo-300',
         },
       }}
       resetGame={initGrid}

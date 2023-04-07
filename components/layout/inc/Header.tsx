@@ -1,20 +1,35 @@
 import React from 'react';
 import Link from 'next/link';
 import Container from '../../base/Container';
-import NavbarLink from './NavbarLink';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBurger, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { twMerge } from 'tailwind-merge';
+import BaseLink from '../../base/BaseLink';
 
 export function Header() {
+  const [burger, setBurger] = React.useState(false);
+
   return (
-    <header className="fixed w-full border-b border-white bg-black">
-      <Container className="flex items-center gap-12 py-2">
+    <header className="fixed z-10 w-full border-b border-amber-300 bg-black">
+      <Container className="flex flex-wrap items-center gap-6 py-2 md:gap-12">
+        <div onClick={() => setBurger(!burger)} className="h-8 w-8 md:hidden">
+          <FontAwesomeIcon icon={burger ? faTimes : faBurger} className="h-8 w-8" />
+        </div>
+
         <Link href="/" className="text-2xl font-bold">
           Kayn.ooo
         </Link>
 
-        <nav className="flex gap-6">
-          <NavbarLink href="/">Home</NavbarLink>
-          <NavbarLink href="/games">Games</NavbarLink>
-          <NavbarLink href="/l">Links</NavbarLink>
+        <nav
+          className={twMerge(
+            'flex-col gap-6 md:flex md:flex-row',
+            burger ? 'flex basis-full text-center md:basis-[initial] md:text-left' : 'hidden',
+          )}
+        >
+          <BaseLink href="/">Home</BaseLink>
+          <BaseLink href="/games">Games</BaseLink>
+          <BaseLink href="/l">Links</BaseLink>
+          <BaseLink href="/contact">Contact</BaseLink>
         </nav>
       </Container>
     </header>

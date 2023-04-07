@@ -10,11 +10,11 @@ import { faChevronRight, faEnvelope, faXmark } from '@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-type ShareModalProps = {
+type LTShareModalProps = {
   close: () => void;
 };
 
-const ShareModal = (props: ShareModalProps) => {
+const LTShareModal = (props: LTShareModalProps) => {
   const url = document.URL;
   const source = 'kaynooo_linktree_profile_share';
 
@@ -89,4 +89,4 @@ const ShareModal = (props: ShareModalProps) => {
   );
 };
 
-export default ShareModal;
+export default LTShareModal;

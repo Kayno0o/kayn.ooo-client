@@ -8,6 +8,7 @@ import { faCircle, faX } from '@fortawesome/free-solid-svg-icons';
 
 type TicTacToeProps = {
   auto: boolean;
+  gridClassName: string;
   height: number;
   length: number;
   width: number;
@@ -95,6 +96,7 @@ const TicTacToe = (props: TicTacToeProps) => {
     <SimpleBoardGame
       auto={props.auto}
       grid={grid}
+      gridClassName={props.gridClassName}
       message={message}
       setPlaceholder={setPlaceholder}
       place={place}
@@ -103,12 +105,12 @@ const TicTacToe = (props: TicTacToeProps) => {
       player={player}
       playerProp={{
         0: {
-          bloc: <FontAwesomeIcon icon={faCircle} className="aspect-square h-full w-full text-red-300" />,
-          textColor: 'text-red-300',
+          bloc: <FontAwesomeIcon icon={faCircle} className="aspect-square h-full w-full text-amber-300" />,
+          textColor: 'text-amber-300',
         },
         1: {
-          bloc: <FontAwesomeIcon icon={faX} className="aspect-square h-full w-full text-blue-300" />,
-          textColor: 'text-blue-300',
+          bloc: <FontAwesomeIcon icon={faX} className="aspect-square h-full w-full text-indigo-300" />,
+          textColor: 'text-indigo-300',
         },
       }}
       resetGame={initGrid}

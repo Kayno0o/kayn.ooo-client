@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { faDeviantart, faDiscord, faInstagram, faSpotify, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faB } from '@fortawesome/free-solid-svg-icons';
-import LinkPage from '../../components/link-tree/LinkPage';
+import LTPage from '../../components/link-tree/LTPage';
 
 const TuigaLinkPage = () => {
   const instagram = 'https://instagram.com/_unonao_';
@@ -11,7 +11,7 @@ const TuigaLinkPage = () => {
   const bereal = 'https://bere.al/theunonao';
 
   return (
-    <LinkPage
+    <LTPage
       title="Noa Aubert"
       profileSrc="/link-tree/tuiga_profile.jpg"
       wallpaperSrc="/link-tree/tuiga_wallpaper.jpg"

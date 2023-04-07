@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type CustomLinkProps = {
+type LTCustomLinkProps = {
   children: string;
   className?: string;
   href: string;
@@ -13,7 +13,7 @@ type CustomLinkProps = {
   type?: 'copy';
 };
 
-const CustomLink = (props: CustomLinkProps) => {
+const LTCustomLink = (props: LTCustomLinkProps) => {
   const [copied, setCopied] = useState<boolean>(false);
 
   return (
@@ -55,4 +55,4 @@ const CustomLink = (props: CustomLinkProps) => {
   );
 };
 
-export default CustomLink;
+export default LTCustomLink;
