@@ -1,9 +1,4 @@
 {
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "env": {
     "browser": true,
     "es2021": true
@@ -13,7 +8,8 @@
     "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:typescript-sort-keys/recommended"
+    "plugin:typescript-sort-keys/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -29,29 +25,11 @@
     "react",
     "sort-exports",
     "sort-keys-fix",
-    "typescript-sort-keys"
+    "typescript-sort-keys",
+    "jsx-a11y"
   ],
   "rules": {
     "@next/next/no-img-element": "off",
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "warn",
-      {
-        "vars": "all",
-        "varsIgnorePattern": "^_",
-        "args": "after-used",
-        "argsIgnorePattern": "^_"
-      }
-    ],
-    "sort-imports": [
-      "warn",
-      {
-        "ignoreDeclarationSort": true
-      }
-    ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "max-lines": [
       "warn",
       {
@@ -60,14 +38,38 @@
         "skipComments": true
       }
     ],
+    "no-unused-vars": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
     "sort-exports/sort-exports": [
       "warn",
       {
         "sortDir": "asc"
       }
     ],
-    "sort-vars": "warn",
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
     "sort-keys": "warn",
-    "sort-keys-fix/sort-keys-fix": "warn"
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "sort-vars": "warn",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "vars": "all",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

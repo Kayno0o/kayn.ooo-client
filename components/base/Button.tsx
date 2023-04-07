@@ -4,11 +4,11 @@ import { twMerge } from 'tailwind-merge';
 type BaseButtonProps = {
   children: any;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const Button = (props: BaseButtonProps) => (
-  <div
+  <button
     className={twMerge(
       'w-fit cursor-pointer rounded-full bg-white px-6 py-1 font-bold text-black transition-colors duration-300 hover:bg-amber-300',
       props.className,
@@ -16,7 +16,7 @@ const Button = (props: BaseButtonProps) => (
     onClick={props.onClick}
   >
     {props.children}
-  </div>
+  </button>
 );
 
 export default Button;

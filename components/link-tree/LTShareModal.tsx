@@ -52,17 +52,25 @@ const LTShareModal = (props: LTShareModalProps) => {
   ];
 
   return (
-    <div
+    <button
       className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm"
       onClick={props.close}
+      onKeyUp={(event) => {
+        if (event.key === 'Escape') props.close();
+      }}
     >
-      <div
+      <button
         className="relative mx-6 w-full max-w-md rounded-md bg-white px-6 py-4"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="absolute right-4 top-4 mr-2 cursor-pointer p-1" onClick={props.close}>
+        <button
+          className="absolute right-4 top-4 mr-2 cursor-pointer p-1"
+          onClick={props.close}
+          onBlur={props.close}
+          aria-label="Close"
+        >
           <FontAwesomeIcon icon={faXmark} />
-        </div>
+        </button>
 
         <h2 className="text-center text-2xl font-bold">Share this page</h2>
 
@@ -84,8 +92,8 @@ const LTShareModal = (props: LTShareModalProps) => {
             </a>
           ))}
         </div>
-      </div>
-    </div>
+      </button>
+    </button>
   );
 };
 

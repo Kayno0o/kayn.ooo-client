@@ -11,10 +11,14 @@ export function Header() {
 
   return (
     <header className="fixed z-10 w-full border-b border-amber-300 bg-black">
-      <Container className="flex flex-wrap items-center gap-6 py-2 md:gap-12">
-        <div onClick={() => setBurger(!burger)} className="h-8 w-8 md:hidden">
+      <Container className="flex flex-wrap items-center gap-6 px-0 py-2 md:gap-12">
+        <button
+          onClick={() => setBurger(!burger)}
+          onKeyDown={(event) => event.key === 'Enter' && setBurger(!burger)}
+          className="h-8 w-8 md:hidden"
+        >
           <FontAwesomeIcon icon={burger ? faTimes : faBurger} className="h-8 w-8" />
-        </div>
+        </button>
 
         <Link href="/" className="text-2xl font-bold">
           Kayn.ooo
@@ -23,7 +27,7 @@ export function Header() {
         <nav
           className={twMerge(
             'flex-col gap-6 md:flex md:flex-row',
-            burger ? 'flex basis-full text-center md:basis-[initial] md:text-left' : 'hidden',
+            burger ? 'flex basis-full items-center md:basis-[initial] md:text-left' : 'hidden',
           )}
         >
           <BaseLink href="/">Home</BaseLink>

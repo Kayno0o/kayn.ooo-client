@@ -27,15 +27,17 @@ const SimpleBoardGame = (props: SimpleBoardGameProps) => (
     <div
       className={twMerge('relative mx-auto grid w-full max-w-lg grid-cols-2', props.gridClassName)}
       onMouseOut={() => props.setPlaceholder({ x: -2, y: -2 })}
+      onBlur={() => props.setPlaceholder({ x: -2, y: -2 })}
     >
       {props.grid.map((col, x) => (
         <div
           className="flex w-full flex-col"
           key={x}
           onMouseOver={() => (props.onMouseOverCol ? props.onMouseOverCol(x) : null)}
+          onFocus={() => (props.onMouseOverCol ? props.onMouseOverCol(x) : null)}
         >
           {col.map((bloc, y) => (
-            <div
+            <button
               key={y}
               className={twMerge(
                 'flex aspect-square w-full items-center justify-center border border-white',
@@ -44,10 +46,12 @@ const SimpleBoardGame = (props: SimpleBoardGameProps) => (
                   'bg-slate-600',
               )}
               onMouseOver={() => (props.onMouseOverBloc ? props.onMouseOverBloc(x, y) : null)}
-              onMouseUp={() => (props.auto ? null : props.place(x, y))}
+              onFocus={() => (props.onMouseOverBloc ? props.onMouseOverBloc(x, y) : null)}
+              onClick={() => (props.auto ? null : props.place(x, y))}
+              aria-label={`Bloc ${x} ${y}`}
             >
               {bloc !== 0 && props.playerProp[bloc - 1]?.bloc}
-            </div>
+            </button>
           ))}
         </div>
       ))}

@@ -38,23 +38,19 @@ const LTPage = (props: LTPageProps) => {
 
       <div className="absolute inset-0 bg-black/40" />
 
-      <div
-        className="absolute top-6 left-6 z-10 cursor-pointer text-2xl font-black text-white md:top-12 md:left-12"
+      <button
+        className="absolute left-6 top-6 z-10 cursor-pointer text-2xl font-black text-white md:left-12 md:top-12"
         onClick={() => setShareModal(true)}
       >
         <FontAwesomeIcon className="mmd:h-10" icon={faShareAlt} /> <span className="hidden md:inline-block">Share</span>
-      </div>
+      </button>
 
       {shareModal && <LTShareModal close={() => setShareModal(false)} />}
 
       <div className="relative mx-6 flex h-full min-h-screen w-full max-w-2xl flex-col px-6 py-12">
         <div className="flex w-full flex-[1] flex-col items-center justify-between gap-10">
           <div className="flex w-full flex-col items-center gap-8">
-            <img
-              src={props.profileSrc}
-              alt="profile picture"
-              className="w-40 rounded-full border-2 border-white shadow-md"
-            />
+            <img src={props.profileSrc} alt="profile" className="w-40 rounded-full border-2 border-white shadow-md" />
 
             <h1 className="text-center text-4xl font-bold text-white">{props.title}</h1>
           </div>
