@@ -28,7 +28,7 @@ const RequireAuth = (WrappedComponent: React.ComponentType<any>) => {
       return (
         <Container className="flex flex-col items-center justify-center gap-6">
           <p>Fetching user data...</p>
-          <FontAwesomeIcon icon={faSpinner} spin />
+          <FontAwesomeIcon icon={faSpinner} className="h-8 w-8 animate-spin" />
         </Container>
       );
     }

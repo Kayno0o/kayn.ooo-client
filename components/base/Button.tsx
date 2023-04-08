@@ -27,7 +27,7 @@ const Button = (props: BaseButtonProps) => (
     <div className={props.loading ? 'opacity-0' : ''}>{props.children}</div>
     {props.loading && (
       <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
-        <FontAwesomeIcon icon={faSpinner} spin />
+        <FontAwesomeIcon icon={faSpinner} className="h-4 w-4 animate-spin" />
       </div>
     )}
   </button>
