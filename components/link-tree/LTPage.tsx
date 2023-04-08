@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import LTShareModal from './LTShareModal';
+import H1 from '../base/H1';
 
 type LTPageProps = {
   icons: Array<{
@@ -52,7 +53,7 @@ const LTPage = (props: LTPageProps) => {
           <div className="flex w-full flex-col items-center gap-8">
             <img src={props.profileSrc} alt="profile" className="w-40 rounded-full border-2 border-white shadow-md" />
 
-            <h1 className="text-center text-4xl font-bold text-white">{props.title}</h1>
+            <H1 className="text-center text-white">{props.title}</H1>
           </div>
 
           <div className="flex h-8 gap-6">

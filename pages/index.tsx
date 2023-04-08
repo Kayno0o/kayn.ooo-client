@@ -4,7 +4,7 @@ import Container from '../components/base/Container';
 
 const Home: NextPage = () => {
   return (
-    <Container className="flex flex-col gap-20">
+    <Container className="flex flex-col gap-20" title="Home">
       <h1 className="text-center text-2xl">Full-stack web developer</h1>
     </Container>
   );

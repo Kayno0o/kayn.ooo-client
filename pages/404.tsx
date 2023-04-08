@@ -1,12 +1,10 @@
 import React from 'react';
-import Container from '../components/base/Container';
+import Error from '../components/Error';
 
 const Page404 = () => (
-  <Container className="flex h-full flex-col items-center justify-center gap-6">
-    <img className="max-w-lg" src="/cat-search.gif" alt="Black cat looking around" />
-
-    <h1>404: This page could not be found...</h1>
-  </Container>
+  <Error code="404" src="/404.gif">
+    Sorry, I couldn&apos;t find the page for you...
+  </Error>
 );
 
 export default Page404;

@@ -26,14 +26,28 @@ export function Header() {
 
         <nav
           className={twMerge(
-            'flex-col gap-6 md:flex md:flex-row',
+            'grow flex-col gap-6 md:flex md:flex-row',
             burger ? 'flex basis-full items-center md:basis-[initial] md:text-left' : 'hidden',
           )}
         >
-          <BaseLink href="/">Home</BaseLink>
-          <BaseLink href="/games">Games</BaseLink>
-          <BaseLink href="/l">Links</BaseLink>
-          <BaseLink href="/contact">Contact</BaseLink>
+          <BaseLink onClick={() => setBurger(false)} href="/">
+            Home
+          </BaseLink>
+          <BaseLink onClick={() => setBurger(false)} href="/games">
+            Games
+          </BaseLink>
+          <BaseLink onClick={() => setBurger(false)} href="/l">
+            Links
+          </BaseLink>
+          <BaseLink onClick={() => setBurger(false)} href="/contact">
+            Contact
+          </BaseLink>
+
+          <div className="grow" />
+
+          <BaseLink onClick={() => setBurger(false)} href="/admin">
+            Admin
+          </BaseLink>
         </nav>
       </Container>
     </header>

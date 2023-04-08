@@ -4,10 +4,11 @@ import Link from 'next/link';
 import Connect4 from '../../components/games/Connect4';
 import Button from '../../components/base/Button';
 import TicTacToe from '../../components/games/TicTacToe';
+import H1 from '../../components/base/H1';
 
 const GamesPage = () => (
-  <Container className="flex flex-col gap-6">
-    <h1 className="text-center text-4xl font-bold">Games</h1>
+  <Container className="flex flex-col gap-6" title="Games">
+    <H1 className="text-center">Games</H1>
 
     <div className="grid grid-cols-2 gap-6">
       <div className="flex flex-col items-center gap-4">
