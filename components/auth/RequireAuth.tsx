@@ -14,14 +14,9 @@ const RequireAuth = (WrappedComponent: React.ComponentType<any>) => {
     useEffect(() => {
       const userApi = new UserApi();
 
-      userApi
-        .fetchUser()
-        .then((user) => {
-          setUser(user);
-        })
-        .catch(() => {
-          setUser(null);
-        });
+      userApi.fetchUser(false).then((user) => {
+        setUser(user);
+      });
     }, []);
 
     if (user === undefined) {
