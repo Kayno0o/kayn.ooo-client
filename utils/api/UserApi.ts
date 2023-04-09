@@ -13,7 +13,7 @@ export default class UserApi extends Api<User> {
   async loginUser(userData: UserRegisterForm): Promise<void> {
     localStorage.removeItem('token');
 
-    return this.customPost<UserRegisterForm, UserRegisterOutput>(userData, '/api/login').then((data) => {
+    return this.customPost<UserRegisterForm, UserRegisterOutput>(userData, 'login').then((data) => {
       localStorage.setItem('token', data.token);
     });
   }
@@ -25,7 +25,7 @@ export default class UserApi extends Api<User> {
   async registerUser(userData: UserRegisterForm): Promise<void> {
     localStorage.removeItem('token');
 
-    return this.customPost<UserRegisterForm, UserRegisterOutput>(userData, '/api/register').then((data) => {
+    return this.customPost<UserRegisterForm, UserRegisterOutput>(userData, 'register').then((data) => {
       localStorage.setItem('token', data.token);
     });
   }

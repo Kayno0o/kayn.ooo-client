@@ -6,7 +6,7 @@ export default class Api<T = any> {
   }
 
   async get(endpoint = this.endpoint): Promise<T> {
-    return this.customGet<T>(`/api/${endpoint}`);
+    return this.customGet<T>(endpoint);
   }
 
   async customGet<U>(route = this.endpoint): Promise<U> {
@@ -30,7 +30,7 @@ export default class Api<T = any> {
   }
 
   async post(data: T, endpoint = this.endpoint): Promise<T> {
-    return this.customPost<T, T>(data, `/api/${endpoint}`);
+    return this.customPost<T, T>(data, endpoint);
   }
 
   async customPost<T, U>(data: T, route = this.endpoint): Promise<U> {
