@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Container from '../../components/base/Container';
 import Form from '../../components/form/Form';
@@ -35,17 +35,6 @@ const AdminLoginPage = () => {
         setLoading(false);
       });
   };
-
-  useEffect(() => {
-    const api = new UserApi();
-
-    api
-      .fetchUser()
-      .then(() => {
-        push('/admin');
-      })
-      .catch(() => {});
-  });
 
   return (
     <Container title="Admin Login Page" noindex>

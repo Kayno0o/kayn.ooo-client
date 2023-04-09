@@ -6,7 +6,7 @@ import { faBurger, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { twMerge } from 'tailwind-merge';
 import BaseLink from '../../base/BaseLink';
 
-export function Header() {
+const Header = () => {
   const [burger, setBurger] = React.useState(false);
 
   return (
@@ -52,4 +52,6 @@ export function Header() {
       </Container>
     </header>
   );
-}
+};
+
+export default Header;

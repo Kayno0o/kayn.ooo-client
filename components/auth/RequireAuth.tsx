@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import UserApi from '../../utils/api/UserApi';
 import { User } from '../../types';
-import Container from './Container';
+import Container from '../base/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import { Footer } from './inc/Footer';
-import { Header } from './inc/Header';
+import Footer from './inc/Footer';
+import Header from './inc/Header';
 import { twMerge } from 'tailwind-merge';
 
 export type LayoutProps = {

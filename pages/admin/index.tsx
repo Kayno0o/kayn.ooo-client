@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../../components/base/Container';
-import RequireAuth from '../../components/base/RequireAuth';
+import RequireAuth from '../../components/auth/RequireAuth';
 import { User } from '../../types';
 import H1 from '../../components/base/H1';
 import Button from '../../components/base/Button';
