@@ -3,6 +3,7 @@ export interface User {
   deleted_at: string | null;
   email: string;
   id: number;
+  role: UserRoleType;
   updated_at: string;
 }
 
@@ -14,3 +15,5 @@ export class UserRegisterForm {
 export interface UserRegisterOutput {
   token: string;
 }
+
+export type UserRoleType = 'ROLE_USER' | 'ROLE_ADMIN';

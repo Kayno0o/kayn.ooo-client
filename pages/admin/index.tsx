@@ -3,9 +3,9 @@ import Container from '../../components/base/Container';
 import H1 from '../../components/base/H1';
 import Button from '../../components/base/Button';
 import { useRouter } from 'next/router';
-import RequireAuth from '../../components/auth/RequireAuth';
 import { User } from '../../types';
 import UserApi from '../../utils/api/UserApi';
+import IsGranted from '../../components/auth/IsGranted';
 
 const AdminPage = ({ user }: { user: User }) => {
   const { push } = useRouter();
@@ -32,4 +32,4 @@ const AdminPage = ({ user }: { user: User }) => {
   );
 };
 
-export default RequireAuth(AdminPage);
+export default IsGranted(AdminPage, 'ROLE_ADMIN');

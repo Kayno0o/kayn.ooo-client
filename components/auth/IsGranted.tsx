@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import UserApi from '../../utils/api/UserApi';
-import { User } from '../../types';
+import { User, UserRoleType } from '../../types';
 import Container from '../base/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { isGranted } from '../../utils/utils';
 
-const RequireAuth = (WrappedComponent: React.ComponentType<any>) => {
+const IsGranted = (WrappedComponent: React.ComponentType<any>, role: UserRoleType = 'ROLE_USER') => {
   const AuthWrapper = (props: any) => {
     const router = useRouter();
     const [user, setUser] = useState<User | null | undefined>(undefined);
@@ -33,10 +34,15 @@ const RequireAuth = (WrappedComponent: React.ComponentType<any>) => {
       return null;
     }
 
+    if (!isGranted(user, role)) {
+      router.push('/401');
+      return null;
+    }
+
     return <WrappedComponent {...props} user={user} />;
   };
 
   return AuthWrapper;
 };
 
-export default RequireAuth;
+export default IsGranted;
