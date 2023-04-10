@@ -37,7 +37,7 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <Container title="Admin Login Page" noindex>
+    <Container title="Admin Login" noindex>
       <H1>Admin Login Page</H1>
 
       <Form submitLabel="Login" className="pt-12" onSubmit={onSubmit} error={error} loading={loading}>

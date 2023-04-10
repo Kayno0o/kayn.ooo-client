@@ -19,7 +19,7 @@ const AdminPage = ({ user }: { user: User }) => {
   };
 
   return (
-    <Container noindex>
+    <Container noindex className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <H1>Admin Page</H1>
         <Button small onClick={() => logout()}>
@@ -27,7 +27,12 @@ const AdminPage = ({ user }: { user: User }) => {
         </Button>
       </div>
 
-      {user && user.email}
+      <p>Logged in as {user.email}</p>
+
+      <div className="flex flex-wrap gap-8">
+        <Button onClick={() => push('/admin/users')}>Users</Button>
+        <Button onClick={() => push('/admin/translations')}>Translations</Button>
+      </div>
     </Container>
   );
 };

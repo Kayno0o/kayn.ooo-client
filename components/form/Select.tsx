@@ -1,13 +1,12 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type InputProps = {
+type SelectProps = {
   className?: string;
-  inputClassName?: string;
-  label?: string;
-  labelClassName?: string;
+  label: string;
   onBlur?: (value: string) => void;
   onChange?: (value: string) => void;
+  options: Array<string>;
   placeholder?: string;
   required?: boolean;
   resetError?: () => void;
@@ -15,36 +14,39 @@ type InputProps = {
   value: string;
 };
 
-const Input = (props: InputProps) => {
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+const Select = (props: SelectProps) => {
+  const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     props.onChange && props.onChange(event.target.value);
     props.resetError && props.resetError();
   };
 
-  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLSelectElement>) => {
     props.onBlur && props.onBlur(event.target.value);
     props.resetError && props.resetError();
   };
 
   return (
     <div className={twMerge('flex w-full flex-col gap-1', props.className)}>
-      {props.label && (
-        <label htmlFor={props.label} className={twMerge('text-md', props.labelClassName)}>
-          {props.label} {props.required && <span className="font-bold text-red-500">*</span>}
-        </label>
-      )}
+      <label htmlFor={props.label}>
+        {props.label} {props.required && <span className="font-bold text-red-500">*</span>}
+      </label>
 
-      <input
-        className={twMerge('w-full rounded-xl px-2 py-1 text-black', props.inputClassName)}
-        type={props.type || 'text'}
+      <select
+        className="rounded-xl px-2 py-1 text-black"
         id={props.label}
         value={props.value}
         onBlur={onBlur}
         onChange={onChange}
         placeholder={props.placeholder}
-      />
+      >
+        {props.options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
 
-export default Input;
+export default Select;

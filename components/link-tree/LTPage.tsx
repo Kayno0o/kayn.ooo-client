@@ -40,10 +40,11 @@ const LTPage = (props: LTPageProps) => {
       <div className="absolute inset-0 bg-black/40" />
 
       <button
-        className="absolute left-6 top-6 z-10 cursor-pointer text-2xl font-black text-white md:left-12 md:top-12"
+        className="absolute left-6 top-6 z-10 flex cursor-pointer flex-col items-center text-white md:left-12 md:top-12"
         onClick={() => setShareModal(true)}
       >
-        <FontAwesomeIcon className="mmd:h-10" icon={faShareAlt} /> <span className="hidden md:inline-block">Share</span>
+        <FontAwesomeIcon className="h-10" icon={faShareAlt} />
+        <span className="hidden text-lg font-black  md:inline-block">Share</span>
       </button>
 
       {shareModal && <LTShareModal close={() => setShareModal(false)} />}

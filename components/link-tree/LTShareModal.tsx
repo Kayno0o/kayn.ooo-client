@@ -60,16 +60,19 @@ const LTShareModal = (props: LTShareModalProps) => {
       }}
     >
       <button
-        className="relative mx-6 w-full max-w-md rounded-md bg-white px-6 py-4"
+        className="relative mx-6 w-full max-w-md cursor-default rounded-md bg-white px-6 py-4"
         onClick={(event) => event.stopPropagation()}
+        onKeyUp={(event) => event.stopPropagation()}
       >
         <button
           className="absolute right-4 top-4 mr-2 cursor-pointer p-1"
           onClick={props.close}
-          onBlur={props.close}
+          onKeyUp={(event) => {
+            if (event.key === 'Enter') props.close();
+          }}
           aria-label="Close"
         >
-          <FontAwesomeIcon icon={faXmark} />
+          <FontAwesomeIcon className="h-8" icon={faXmark} />
         </button>
 
         <h2 className="text-center text-2xl font-bold">Share this page</h2>
@@ -81,13 +84,13 @@ const LTShareModal = (props: LTShareModalProps) => {
               target="_blank"
               rel="noreferrer"
               key={shareLink.name}
-              className="group relative mx-2 flex items-center gap-3 py-4"
+              className="group relative mx-2 flex items-center gap-4 py-4"
             >
-              <FontAwesomeIcon icon={shareLink.icon} />
-              <span className="text-xl font-bold">{shareLink.name}</span>
+              <FontAwesomeIcon className="h-6" icon={shareLink.icon} />
+              <span className="text-lg font-bold">{shareLink.name}</span>
 
               <div className="absolute right-4 translate-x-0 transition-transform duration-500 group-hover:translate-x-4">
-                <FontAwesomeIcon icon={faChevronRight} />
+                <FontAwesomeIcon className="h-5" icon={faChevronRight} />
               </div>
             </a>
           ))}

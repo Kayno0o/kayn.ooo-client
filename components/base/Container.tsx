@@ -1,11 +1,12 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type ContainerProps = {
   children: any;
   className?: string;
   description?: string;
+  lang?: string;
   left?: any;
   noindex?: boolean;
   right?: any;
@@ -22,6 +23,10 @@ const Container = (props: ContainerProps) => {
         : 'A website by Kevyn Fyleyssant. A place to share my projects and random things.',
     [props.description],
   );
+
+  useEffect(() => {
+    document.querySelector('html')?.setAttribute('lang', props.lang || 'en');
+  }, [props.lang, props.noindex]);
 
   return (
     <>

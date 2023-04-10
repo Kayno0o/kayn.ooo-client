@@ -17,7 +17,7 @@ const BaseLink = (props: BaseLinkProps) => {
       onClick={props.onClick}
     >
       {props.children}
-      <div className="absolute bottom-0 h-[1px] w-full bg-amber-300 transition-all duration-300 group-hover:-bottom-1"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] w-full bg-amber-300 transition-all duration-300 group-hover:-bottom-1"></div>
     </Link>
   );
 };

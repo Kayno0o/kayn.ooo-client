@@ -1,4 +1,4 @@
-import { User, UserRegisterForm, UserRegisterOutput } from '../../types';
+import { User, UserRegisterFormType, UserRegisterOutput } from '../../types';
 import Api from './Api';
 
 export default class UserApi extends Api<User> {
@@ -15,7 +15,7 @@ export default class UserApi extends Api<User> {
       return JSON.parse(sessionStorage.getItem('user') as string);
     }
 
-    return this.get('current_user')
+    return this.find('current_user')
       .then((user) => {
         sessionStorage.setItem('user', JSON.stringify(user));
         return user;
@@ -26,11 +26,11 @@ export default class UserApi extends Api<User> {
       });
   }
 
-  async loginUser(userData: UserRegisterForm): Promise<void> {
+  async loginUser(userData: UserRegisterFormType): Promise<void> {
     localStorage.removeItem('token');
     sessionStorage.removeItem('user');
 
-    return this.customPost<UserRegisterForm, UserRegisterOutput>(userData, 'login').then((data) => {
+    return this.customPost<UserRegisterFormType, UserRegisterOutput>(userData, 'login').then((data) => {
       localStorage.setItem('token', data.token);
     });
   }
@@ -40,11 +40,11 @@ export default class UserApi extends Api<User> {
     sessionStorage.removeItem('user');
   }
 
-  async registerUser(userData: UserRegisterForm): Promise<void> {
+  async registerUser(userData: UserRegisterFormType): Promise<void> {
     localStorage.removeItem('token');
     sessionStorage.removeItem('user');
 
-    return this.customPost<UserRegisterForm, UserRegisterOutput>(userData, 'register').then((data) => {
+    return this.customPost<UserRegisterFormType, UserRegisterOutput>(userData, 'register').then((data) => {
       localStorage.setItem('token', data.token);
     });
   }
