@@ -2,11 +2,11 @@ import Head from 'next/head';
 import React, { useEffect } from 'react';
 
 type MetaProps = {
+  description?: string;
+  lang?: string;
   noindex?: boolean;
   src?: string;
   title?: string;
-  description?: string;
-  lang?: string;
 };
 
 const Meta = (props: MetaProps) => {
