@@ -6,6 +6,7 @@ import H2 from '../../components/base/H2';
 import TranslationForm from '../../components/form/TranslationForm';
 import { Translation, TranslationFormType } from '../../types/translation';
 import { ApiError } from '../../types';
+import Meta from '../../components/base/Meta';
 
 const TranslationsPage = () => {
   const [translations, setTranslations] = useState<Array<Translation>>([]);
@@ -75,41 +76,45 @@ const TranslationsPage = () => {
   );
 
   return (
-    <Container className="flex flex-col gap-6" noindex>
-      <H1>Translations</H1>
+    <>
+      <Meta noindex />
 
-      <div>
-        <H2>Add new translation</H2>
-        <TranslationForm
-          save
-          onSave={addTranslation}
-          translation={newTranslation}
-          index={-1}
-          updateTranslationInput={(translation) => setNewTranslation(translation)}
-          updateTranslation={() => {}}
-        />
-      </div>
+      <Container className="flex flex-col gap-6">
+        <H1>Translations</H1>
 
-      <H2>Translations list</H2>
+        <div>
+          <H2>Add new translation</H2>
+          <TranslationForm
+            save
+            onSave={addTranslation}
+            translation={newTranslation}
+            index={-1}
+            updateTranslationInput={(translation) => setNewTranslation(translation)}
+            updateTranslation={() => {}}
+          />
+        </div>
 
-      {translations.map((translation, index) => (
-        <TranslationForm
-          key={translation.id}
-          index={index}
-          translation={translation}
-          updateTranslation={updateTranslation}
-          updateTranslationInput={updateTranslationInput}
-        />
-      ))}
+        <H2>Translations list</H2>
 
-      {loading && <p>Loading translations...</p>}
+        {translations.map((translation, index) => (
+          <TranslationForm
+            key={translation.id}
+            index={index}
+            translation={translation}
+            updateTranslation={updateTranslation}
+            updateTranslationInput={updateTranslationInput}
+          />
+        ))}
 
-      {error && (
-        <p>
-          Error loading translations: {error.status} {error.error}
-        </p>
-      )}
-    </Container>
+        {loading && <p>Loading translations...</p>}
+
+        {error && (
+          <p>
+            Error loading translations: {error.status} {error.error}
+          </p>
+        )}
+      </Container>
+    </>
   );
 };
 

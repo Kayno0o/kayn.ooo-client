@@ -6,6 +6,7 @@ import Input from '../../components/form/Input';
 import H1 from '../../components/base/H1';
 import UserApi from '../../utils/api/UserApi';
 import { useRouter } from 'next/router';
+import Meta from '../../components/base/Meta';
 
 const AdminLoginPage = () => {
   const [email, setEmail] = React.useState('');
@@ -37,31 +38,35 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <Container title="Admin Login" noindex>
-      <H1>Admin Login Page</H1>
+    <>
+      <Meta noindex />
 
-      <Form submitLabel="Login" className="pt-12" onSubmit={onSubmit} error={error} loading={loading}>
-        <Input
-          label="Email"
-          type="email"
-          value={email}
-          onChange={setEmail}
-          required
-          placeholder="Enter email"
-          resetError={() => setError('')}
-        />
+      <Container>
+        <H1>Admin Login Page</H1>
 
-        <Input
-          label="Password"
-          type="password"
-          value={password}
-          onChange={setPassword}
-          required
-          placeholder="Enter password"
-          resetError={() => setError('')}
-        />
-      </Form>
-    </Container>
+        <Form submitLabel="Login" className="pt-12" onSubmit={onSubmit} error={error} loading={loading}>
+          <Input
+            label="Email"
+            type="email"
+            value={email}
+            onChange={setEmail}
+            required
+            placeholder="Enter email"
+            resetError={() => setError('')}
+          />
+
+          <Input
+            label="Password"
+            type="password"
+            value={password}
+            onChange={setPassword}
+            required
+            placeholder="Enter password"
+            resetError={() => setError('')}
+          />
+        </Form>
+      </Container>
+    </>
   );
 };
 
