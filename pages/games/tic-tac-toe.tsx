@@ -11,7 +11,7 @@ const TicTacToePage = () => {
 
       <Container className="flex flex-col gap-4">
         <H1 className="text-center">Tic Tac Toe</H1>
-        <TicTacToe gridClassName="grid-cols-3" height={3} width={3} length={3} auto={false} />
+        <TicTacToe className="grid-cols-3" height={3} width={3} length={3} auto={false} />
       </Container>
     </>
   );

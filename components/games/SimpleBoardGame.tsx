@@ -4,8 +4,8 @@ import Button from '../base/Button';
 
 type SimpleBoardGameProps = {
   auto: boolean;
+  className?: string;
   grid: Array<Array<number>>;
-  gridClassName: string;
   message: string | null;
   onMouseOverBloc?: (x: number, y: number) => void;
   onMouseOverCol?: (x: number) => void;
@@ -25,7 +25,7 @@ type SimpleBoardGameProps = {
 const SimpleBoardGame = (props: SimpleBoardGameProps) => (
   <>
     <div
-      className={twMerge('relative mx-auto grid w-full max-w-lg grid-cols-2', props.gridClassName)}
+      className={twMerge('relative mx-auto flex w-full max-w-lg', props.className)}
       onMouseOut={() => props.setPlaceholder({ x: -2, y: -2 })}
       onBlur={() => props.setPlaceholder({ x: -2, y: -2 })}
     >

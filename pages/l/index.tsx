@@ -16,7 +16,7 @@ const KaynoooLinkPage = () => {
     <LTPage
       title="Kevyn Fyleyssant"
       profileSrc="/link-tree/profile.jpeg"
-      wallpaperSrc={`/link-tree/wallpaper.jpg`}
+      wallpaperSrc="bg-[url('/link-tree/wallpaper.jpg')]"
       icons={[
         { href: 'https://instagram.com/kevy.n', icon: faInstagram },
         { href: 'https://open.spotify.com/user/8fd163ej8oxnv15eryot9m2x7', icon: faSpotify },

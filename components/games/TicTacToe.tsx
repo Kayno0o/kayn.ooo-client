@@ -8,7 +8,7 @@ import { faCircle, faX } from '@fortawesome/free-solid-svg-icons';
 
 type TicTacToeProps = {
   auto: boolean;
-  gridClassName: string;
+  className?: string;
   height: number;
   length: number;
   width: number;
@@ -96,12 +96,12 @@ const TicTacToe = (props: TicTacToeProps) => {
     <SimpleBoardGame
       auto={props.auto}
       grid={grid}
-      gridClassName={props.gridClassName}
+      className={props.className}
       message={message}
       setPlaceholder={setPlaceholder}
       place={place}
       placeholder={placeholder}
-      onMouseOverBloc={(x, y) => (props.auto ? null : setPlaceholder({ x, y: y }))}
+      onMouseOverBloc={(x, y) => (props.auto ? null : setPlaceholder({ x, y }))}
       player={player}
       playerProp={{
         0: {

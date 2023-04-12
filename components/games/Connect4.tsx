@@ -6,7 +6,7 @@ import { checkWin } from '../../utils/board';
 
 type Connect4Props = {
   auto: boolean;
-  gridClassName: string;
+  className?: string;
   height: number;
   length: number;
   width: number;
@@ -94,8 +94,8 @@ const Connect4 = (props: Connect4Props) => {
   return (
     <SimpleBoardGame
       auto={props.auto}
+      className={props.className}
       grid={grid}
-      gridClassName={props.gridClassName}
       message={message}
       setPlaceholder={setPlaceholder}
       place={place}

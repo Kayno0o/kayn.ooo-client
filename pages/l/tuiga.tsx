@@ -14,7 +14,7 @@ const TuigaLinkPage = () => {
     <LTPage
       title="Noa Aubert"
       profileSrc="/link-tree/tuiga_profile.jpg"
-      wallpaperSrc="/link-tree/tuiga_wallpaper.jpg"
+      wallpaperSrc="bg-[url('/link-tree/tuiga_wallpaper.jpg')]"
       icons={[
         { href: instagram, icon: faInstagram },
         { href: spotify, icon: faSpotify },

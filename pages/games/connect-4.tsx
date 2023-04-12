@@ -11,7 +11,7 @@ const Connect4Page = () => {
 
       <Container className="flex flex-col gap-4">
         <H1 className="text-center">Connect 4</H1>
-        <Connect4 gridClassName="grid-cols-7" height={6} width={7} length={4} auto={false} />
+        <Connect4 className="grid-cols-7" height={6} width={7} length={4} auto={false} />
       </Container>
     </>
   );

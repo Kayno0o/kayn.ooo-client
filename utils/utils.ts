@@ -1,5 +1,11 @@
 import { User, UserRoleType } from '../types';
 
+export const inRange = (val: number, minOrMax: number, max?: number) => {
+  if (max) return val > minOrMax && val < max;
+
+  return val >= 0 && val < minOrMax;
+};
+
 export const isGranted = (user: User, role: UserRoleType): boolean => {
   return roles[user.role].includes(role);
 };

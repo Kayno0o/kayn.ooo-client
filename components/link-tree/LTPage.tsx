@@ -8,6 +8,7 @@ import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import LTShareModal from './LTShareModal';
 import H1 from '../base/H1';
 import Meta from '../base/Meta';
+import { twMerge } from 'tailwind-merge';
 
 type LTPageProps = {
   icons: Array<{
@@ -34,12 +35,7 @@ const LTPage = (props: LTPageProps) => {
       <Meta title={props.title} description={`Linktree for ${props.title}`} src={props.profileSrc} />
 
       <div className="relative flex min-h-screen justify-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${props.wallpaperSrc}')`,
-          }}
-        />
+        <div className={twMerge('absolute inset-0 bg-cover bg-center', props.wallpaperSrc)} />
 
         <div className="absolute inset-0 bg-black/40" />
 
