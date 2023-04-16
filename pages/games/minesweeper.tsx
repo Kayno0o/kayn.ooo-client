@@ -12,7 +12,7 @@ const MinesweeperPage = () => {
       <Container className="flex flex-col gap-4">
         <H1 className="text-center">Minesweeper</H1>
 
-        <Minesweeper height={20} width={20} maxBomb={20} />
+        <Minesweeper height={20} width={20} maxBomb={40} />
       </Container>
     </>
   );

@@ -1,5 +1,4 @@
 import { Grid } from './../types/board';
-import { randomInt } from './utils';
 
 export const checkWin = (grid: Grid, length: number): string | null => {
   if (grid.every((col) => col.every((b) => b !== 0))) {
@@ -35,5 +34,3 @@ export const checkWin = (grid: Grid, length: number): string | null => {
 };
 
 export const emptyGrid = (w: number, h: number) => [...Array(w)].map(() => [...Array(h)].map(() => 0));
-
-export const getRandomPosition = (w: number, h: number) => [randomInt(0, w), randomInt(0, h)];

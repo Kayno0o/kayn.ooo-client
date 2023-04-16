@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Grid, MinesweeperBloc, MinesweeperGameState } from '../../types/board';
 import Board from './Board';
-import { inRange } from '../../utils/utils';
-import { getRandomPosition } from '../../utils/board';
+import { inRange, randomInt } from '../../utils/utils';
 import Button from '../base/Button';
 
 type MinesweeperProps = {
@@ -17,51 +16,34 @@ const Minesweeper = (props: MinesweeperProps) => {
   const [gameState, setGameState] = useState<MinesweeperGameState>('playing');
   const [flag, setFlag] = useState<boolean>(false);
 
-  const checkWin = useCallback(
-    (grid: Grid<MinesweeperBloc>) => {
-      let flags = 0;
+  const checkWin = useCallback((grid: Grid<MinesweeperBloc>) => {
+    return grid.every((col) =>
+      col.every((bloc) => (bloc.type === 'bomb' && bloc.hidden) || (bloc.type === 'blank' && !bloc.hidden)),
+    );
+  }, []);
 
-      grid.forEach((col) =>
-        col.forEach((bloc) => {
-          if (bloc.type === 'bomb' && bloc.flag) flags++;
-          if (!bloc.flag && bloc.hidden) flags--;
-        }),
-      );
-
-      if (flags === props.maxBomb) {
-        setGameState('win');
-        return true;
-      }
-
-      return false;
-    },
-    [props.maxBomb],
-  );
-
-  const exploreBloc = useCallback(
+  const exploreNeighbours = useCallback(
     (grid: Grid<MinesweeperBloc>, x: number, y: number, visitedBlocs: Set<number>) => {
-      const dirs = [
+      [
         [-1, 0],
         [1, 0],
         [0, -1],
         [0, 1],
-      ];
+      ].forEach(([dirX, dirY]) => {
+        const [newX, newY] = [x + dirX, y + dirY];
 
-      dirs.forEach((dir) => {
-        const newX = x + dir[0];
-        const newY = y + dir[1];
         if (!inRange(newX, props.width) || !inRange(newY, props.height) || visitedBlocs.has(newX * props.width + newY))
           return;
 
-        const bloc = grid[newX][newY];
         visitedBlocs.add(newX * props.width + newY);
 
+        const bloc = grid[newX][newY];
         if (!bloc.hidden) return;
 
         grid[newX][newY].hidden = false;
         grid[newX][newY].flag = false;
 
-        if (bloc.type === 'blank' && bloc.bombs === 0) exploreBloc(grid, newX, newY, visitedBlocs);
+        if (bloc.type === 'blank' && bloc.bombs === 0) exploreNeighbours(grid, newX, newY, visitedBlocs);
       });
     },
     [props.height, props.width],
@@ -73,46 +55,25 @@ const Minesweeper = (props: MinesweeperProps) => {
     let placedBombs = 0;
 
     do {
-      const [x, y] = getRandomPosition(props.width, props.height);
+      const [x, y] = [randomInt(props.width), randomInt(props.height)];
 
       const bloc = newGrid[x][y];
       if (bloc.type !== 'bomb') {
         newGrid[x][y].type = 'bomb';
         placedBombs++;
+
+        for (let dirX = -1; dirX <= 1; dirX++) {
+          for (let dirY = -1; dirY <= 1; dirY++) {
+            const [newX, newY] = [x + dirX, y + dirY];
+
+            if (!inRange(newX, newGrid.length) || !inRange(newY, newGrid[x].length) || (x === newX && y === newY))
+              continue;
+
+            newGrid[newX][newY].bombs++;
+          }
+        }
       }
     } while (placedBombs < props.maxBomb);
-
-    newGrid.map((col, x) => {
-      col.map((bloc, y) => {
-        if (bloc.type === 'bomb') return bloc;
-
-        const dirs = [
-          [-1, -1],
-          [-1, 0],
-          [-1, 1],
-          [0, -1],
-          [0, 1],
-          [1, -1],
-          [1, 0],
-          [1, 1],
-        ];
-
-        let bombs = 0;
-
-        dirs.forEach((dir) => {
-          const newX = x + dir[0];
-          const newY = y + dir[1];
-          if (!inRange(newX, newGrid.length) || !inRange(newY, newGrid[x].length)) return;
-
-          const bloc = newGrid[newX][newY];
-
-          if (bloc.type === 'bomb') bombs++;
-        });
-
-        bloc.bombs = bombs;
-        return bloc;
-      });
-    });
 
     return newGrid;
   }, [props.height, props.maxBomb, props.width]);
@@ -143,21 +104,15 @@ const Minesweeper = (props: MinesweeperProps) => {
         copy[x][y].hidden = false;
         setGrid(copy);
 
-        if (checkWin(copy)) return;
+        if (bloc.type === 'bomb') return setGameState('lost');
 
-        if (bloc.type === 'bomb') {
-          setGameState('lost');
-          return;
-        }
-
-        if (bloc.type === 'blank' && bloc.bombs === 0) {
-          exploreBloc(copy, x, y, visitedBlocs);
-        }
+        if (bloc.type === 'blank' && bloc.bombs === 0) exploreNeighbours(copy, x, y, visitedBlocs);
       }
 
+      if (checkWin(copy)) return setGameState('win');
       setGrid(copy);
     },
-    [checkWin, exploreBloc, flag, gameState, grid, props.width],
+    [checkWin, exploreNeighbours, flag, gameState, grid, props.width],
   );
 
   return (
@@ -167,14 +122,15 @@ const Minesweeper = (props: MinesweeperProps) => {
         grid={grid}
         statesClassFormatter={(x: number, y: number) => {
           const bloc = grid[x][y];
-          if (bloc.flag) return 'bg-green-300';
+          if (!bloc.hidden && bloc.type === 'blank') return 'border-0';
+          if (bloc.flag) return 'bg-green-300 border-0';
           if (bloc.hidden) return 'bg-black';
-          if (bloc.type === 'bomb') return 'bg-red-300';
+          if (bloc.type === 'bomb') return 'bg-red-300 border-0';
           return 'bg-slate-700';
         }}
         onBlocClick={onBlocClick}
         formatBloc={(bloc: MinesweeperBloc) => {
-          if (!bloc.hidden && bloc.bombs > 0) return bloc.bombs;
+          if (!bloc.hidden && bloc.type !== 'bomb' && bloc.bombs > 0) return bloc.bombs;
         }}
         popup={gameState === 'win' ? 'You win' : gameState === 'lost' ? 'You lose' : ''}
       />
