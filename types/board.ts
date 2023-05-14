@@ -10,3 +10,5 @@ export class MinesweeperBloc {
 export type MinesweeperBlocType = 'blank' | 'bomb';
 
 export type MinesweeperGameState = 'lost' | 'win' | 'playing';
+
+export type TorusBloc = 1 | 2 | 3 | 4;

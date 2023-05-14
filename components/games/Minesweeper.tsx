@@ -129,7 +129,9 @@ const Minesweeper = (props: MinesweeperProps) => {
           return 'bg-slate-700';
         }}
         onBlocClick={onBlocClick}
-        formatBloc={(bloc: MinesweeperBloc) => {
+        formatBloc={(x, y) => {
+          const bloc = grid[x][y];
+
           if (!bloc.hidden && bloc.type !== 'bomb' && bloc.bombs > 0) return bloc.bombs;
         }}
         popup={gameState === 'win' ? 'You win' : gameState === 'lost' ? 'You lose' : ''}

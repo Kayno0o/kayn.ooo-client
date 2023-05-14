@@ -4,14 +4,14 @@ import { twMerge } from 'tailwind-merge';
 
 type BoardProps = {
   className?: string;
-  formatBloc: (bloc: any) => any;
+  formatBloc?: (x: number, y: number) => any;
   grid: Grid<any>;
   onBlocClick?: (x: number, y: number) => void;
   onMouseOverBloc?: (x: number, y: number) => void;
   placeholder?: { x: number; y: number };
   popup?: string;
   setPlaceholder?: (props: { x: number; y: number }) => void;
-  statesClassFormatter: (x: number, y: number) => string;
+  statesClassFormatter?: (x: number, y: number) => string;
 };
 
 const Board = (props: BoardProps) => {
@@ -28,7 +28,7 @@ const Board = (props: BoardProps) => {
               key={y}
               className={twMerge(
                 'relative flex aspect-square w-full items-center justify-center border border-white',
-                props.statesClassFormatter(x, y),
+                props.statesClassFormatter && props.statesClassFormatter(x, y),
                 props.placeholder &&
                   (props.placeholder.x === -1 || props.placeholder.x === x) &&
                   (props.placeholder.y === -1 || props.placeholder.y === y) &&
@@ -39,9 +39,11 @@ const Board = (props: BoardProps) => {
               onClick={() => props.onBlocClick && props.onBlocClick(x, y)}
               aria-label={`Bloc ${x} ${y}`}
             >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                {props.formatBloc(bloc)}
-              </span>
+              {props.formatBloc && (
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                  {props.formatBloc(x, y)}
+                </span>
+              )}
             </button>
           ))}
         </div>
