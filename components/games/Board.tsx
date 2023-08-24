@@ -1,20 +1,20 @@
-import React from 'react';
-import { Grid } from '../../types/board';
-import { twMerge } from 'tailwind-merge';
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
+import type { Grid } from '../../types/board'
 
-type BoardProps = {
-  className?: string;
-  formatBloc?: (x: number, y: number) => any;
-  grid: Grid<any>;
-  onBlocClick?: (x: number, y: number) => void;
-  onMouseOverBloc?: (x: number, y: number) => void;
-  placeholder?: { x: number; y: number };
-  popup?: string;
-  setPlaceholder?: (props: { x: number; y: number }) => void;
-  statesClassFormatter?: (x: number, y: number) => string;
-};
+interface BoardProps {
+  className?: string
+  formatBloc?: (x: number, y: number) => any
+  grid: Grid<any>
+  onBlocClick?: (x: number, y: number) => void
+  onMouseOverBloc?: (x: number, y: number) => void
+  placeholder?: { x: number; y: number }
+  popup?: string
+  setPlaceholder?: (props: { x: number; y: number }) => void
+  statesClassFormatter?: (x: number, y: number) => string
+}
 
-const Board = (props: BoardProps) => {
+function Board(props: BoardProps) {
   return (
     <div
       className={twMerge('relative mx-auto flex w-full max-w-lg', props.className)}
@@ -29,10 +29,10 @@ const Board = (props: BoardProps) => {
               className={twMerge(
                 'relative flex aspect-square w-full items-center justify-center border border-white',
                 props.statesClassFormatter && props.statesClassFormatter(x, y),
-                props.placeholder &&
-                  (props.placeholder.x === -1 || props.placeholder.x === x) &&
-                  (props.placeholder.y === -1 || props.placeholder.y === y) &&
-                  'bg-slate-600',
+                props.placeholder
+                  && (props.placeholder.x === -1 || props.placeholder.x === x)
+                  && (props.placeholder.y === -1 || props.placeholder.y === y)
+                  && 'bg-slate-600',
               )}
               onMouseOver={() => props.onMouseOverBloc && props.onMouseOverBloc(x, y)}
               onFocus={() => props.onMouseOverBloc && props.onMouseOverBloc(x, y)}
@@ -55,7 +55,7 @@ const Board = (props: BoardProps) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board

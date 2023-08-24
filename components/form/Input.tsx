@@ -1,30 +1,30 @@
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-type InputProps = {
-  className?: string;
-  inputClassName?: string;
-  label?: string;
-  labelClassName?: string;
-  onBlur?: (value: string) => void;
-  onChange?: (value: string) => void;
-  placeholder?: string;
-  required?: boolean;
-  resetError?: () => void;
-  type?: string;
-  value: string;
-};
+interface InputProps {
+  className?: string
+  inputClassName?: string
+  label?: string
+  labelClassName?: string
+  onBlur?: (value: string) => void
+  onChange?: (value: string) => void
+  placeholder?: string
+  required?: boolean
+  resetError?: () => void
+  type?: string
+  value: string
+}
 
-const Input = (props: InputProps) => {
+function Input(props: InputProps) {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.onChange && props.onChange(event.target.value);
-    props.resetError && props.resetError();
-  };
+    props.onChange && props.onChange(event.target.value)
+    props.resetError && props.resetError()
+  }
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    props.onBlur && props.onBlur(event.target.value);
-    props.resetError && props.resetError();
-  };
+    props.onBlur && props.onBlur(event.target.value)
+    props.resetError && props.resetError()
+  }
 
   return (
     <div className={twMerge('flex w-full flex-col gap-1', props.className)}>
@@ -44,7 +44,7 @@ const Input = (props: InputProps) => {
         placeholder={props.placeholder}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

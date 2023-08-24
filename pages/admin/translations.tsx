@@ -1,79 +1,80 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import Container from '../../components/base/Container';
-import Api from '../../utils/api/Api';
-import H1 from '../../components/base/H1';
-import H2 from '../../components/base/H2';
-import TranslationForm from '../../components/form/TranslationForm';
-import { Translation, TranslationFormType } from '../../types/translation';
-import { ApiError } from '../../types';
-import Meta from '../../components/base/Meta';
+import React, { useCallback, useEffect, useState } from 'react'
+import Container from '../../components/base/Container'
+import Api from '../../utils/api/Api'
+import H1 from '../../components/base/H1'
+import H2 from '../../components/base/H2'
+import TranslationForm from '../../components/form/TranslationForm'
+import type { Translation } from '../../types/translation'
+import { TranslationFormType } from '../../types/translation'
+import type { ApiError } from '../../types'
+import Meta from '../../components/base/Meta'
 
-const TranslationsPage = () => {
-  const [translations, setTranslations] = useState<Array<Translation>>([]);
-  const [newTranslation, setNewTranslation] = useState<TranslationFormType>(new TranslationFormType());
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<ApiError | null>(null);
+function TranslationsPage() {
+  const [translations, setTranslations] = useState<Array<Translation>>([])
+  const [newTranslation, setNewTranslation] = useState<TranslationFormType>(new TranslationFormType())
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<ApiError | null>(null)
 
   const fetchTranslations = useCallback(() => {
-    const translationApi = new Api<Translation>('translation');
+    const translationApi = new Api<Translation>('translation')
 
-    setLoading(true);
-    setError(null);
+    setLoading(true)
+    setError(null)
 
     translationApi
       .findAll()
       .then((data) => {
-        setTranslations(data);
+        setTranslations(data)
       })
       .catch((error: ApiError) => {
-        setError(error);
+        setError(error)
       })
       .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+        setLoading(false)
+      })
+  }, [])
 
   useEffect(() => {
-    fetchTranslations();
-  }, [fetchTranslations]);
+    fetchTranslations()
+  }, [fetchTranslations])
 
   const addTranslation = useCallback(() => {
-    const translationApi = new Api<Translation>('translation');
+    const translationApi = new Api<Translation>('translation')
 
     translationApi
       .customPost<TranslationFormType, Translation>(newTranslation)
       .then(() => {
-        fetchTranslations();
+        fetchTranslations()
       })
       .catch((error: ApiError) => {
-        setError(error);
+        setError(error)
       })
       .finally(() => {
-        setNewTranslation(new TranslationFormType());
-      });
-  }, [fetchTranslations, newTranslation]);
+        setNewTranslation(new TranslationFormType())
+      })
+  }, [fetchTranslations, newTranslation])
 
   const updateTranslation = useCallback((translation: Translation) => {
-    const translationApi = new Api<Translation>('translation');
+    const translationApi = new Api<Translation>('translation')
 
     translationApi
       .update(translation)
       .then(() => {})
       .catch((error: ApiError) => {
-        setError(error);
-      });
-  }, []);
+        setError(error)
+      })
+  }, [])
 
   const updateTranslationInput = useCallback(
     (translation: Translation, index: number) => {
       setTranslations((prevState) => {
-        const newTranslations = [...prevState];
-        newTranslations[index] = translation;
-        return newTranslations;
-      });
+        const newTranslations = [...prevState]
+        newTranslations[index] = translation
+        return newTranslations
+      })
     },
     [setTranslations],
-  );
+  )
 
   return (
     <>
@@ -89,7 +90,7 @@ const TranslationsPage = () => {
             onSave={addTranslation}
             translation={newTranslation}
             index={-1}
-            updateTranslationInput={(translation) => setNewTranslation(translation)}
+            updateTranslationInput={translation => setNewTranslation(translation)}
             updateTranslation={() => {}}
           />
         </div>
@@ -115,7 +116,7 @@ const TranslationsPage = () => {
         )}
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default TranslationsPage;
+export default TranslationsPage

@@ -1,14 +1,15 @@
-import React, { ReactElement } from 'react';
-import { faDeviantart, faDiscord, faInstagram, faSpotify, faTiktok } from '@fortawesome/free-brands-svg-icons';
-import { faB } from '@fortawesome/free-solid-svg-icons';
-import LTPage from '../../components/link-tree/LTPage';
+import type { ReactElement } from 'react'
+import React from 'react'
+import { faDeviantart, faDiscord, faInstagram, faSpotify, faTiktok } from '@fortawesome/free-brands-svg-icons'
+import { faB } from '@fortawesome/free-solid-svg-icons'
+import LTPage from '../../components/link-tree/LTPage'
 
-const TuigaLinkPage = () => {
-  const instagram = 'https://instagram.com/_unonao_';
-  const spotify = 'https://open.spotify.com/user/873skvipz7wzxzn78hxtgi82d?si=lNoFWjBJQwysFpJ-Mv-t9A';
-  const discord = 'Tuiga.#3877';
-  const tiktok = 'https://vm.tiktok.com/ZMYhMbBNt/';
-  const bereal = 'https://bere.al/theunonao';
+function TuigaLinkPage() {
+  const instagram = 'https://instagram.com/_unonao_'
+  const spotify = 'https://open.spotify.com/user/873skvipz7wzxzn78hxtgi82d?si=lNoFWjBJQwysFpJ-Mv-t9A'
+  const discord = 'Tuiga.#3877'
+  const tiktok = 'https://vm.tiktok.com/ZMYhMbBNt/'
+  const bereal = 'https://bere.al/theunonao'
 
   return (
     <LTPage
@@ -16,10 +17,10 @@ const TuigaLinkPage = () => {
       profileSrc="/link-tree/tuiga_profile.jpg"
       wallpaperSrc="bg-[url('/link-tree/tuiga_wallpaper.jpg')]"
       icons={[
-        { href: instagram, icon: faInstagram },
-        { href: spotify, icon: faSpotify },
-        { href: tiktok, icon: faTiktok },
-        { href: bereal, icon: faB },
+        { href: instagram, icon: faInstagram, label: 'Instagram' },
+        { href: spotify, icon: faSpotify, label: 'Spotify' },
+        { href: tiktok, icon: faTiktok, label: 'Tiktok' },
+        { href: bereal, icon: faB, label: 'BeReal' },
       ]}
       links={[
         {
@@ -61,11 +62,11 @@ const TuigaLinkPage = () => {
         },
       ]}
     />
-  );
-};
+  )
+}
 
 TuigaLinkPage.getLayout = function getLayout(page: ReactElement) {
-  return page;
-};
+  return page
+}
 
-export default TuigaLinkPage;
+export default TuigaLinkPage

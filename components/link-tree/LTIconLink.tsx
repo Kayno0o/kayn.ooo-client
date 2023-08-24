@@ -1,20 +1,21 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
-import React from 'react';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import React from 'react'
 
-type LTIconLinkProps = {
-  className?: string;
-  href: string;
-  icon: IconProp;
-};
+interface LTIconLinkProps {
+  className?: string
+  href: string
+  icon: IconProp
+  ariaLabel?: string
+}
 
-const LTIconLink = (props: LTIconLinkProps) => {
+function LTIconLink(props: LTIconLinkProps) {
   return (
-    <Link className="h-full" href={props.href}>
+    <Link className="h-full" href={props.href} aria-label={props.ariaLabel} target="_blank" rel="noopener noreferrer">
       <FontAwesomeIcon className="h-full" icon={props.icon} color="#fff" />
     </Link>
-  );
-};
+  )
+}
 
-export default LTIconLink;
+export default LTIconLink

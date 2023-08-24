@@ -1,25 +1,25 @@
-import React from 'react';
-import Input from './Input';
-import Button from '../base/Button';
-import { Translation } from '../../types/translation';
+import React from 'react'
+import Button from '../base/Button'
+import type { Translation } from '../../types/translation'
+import Input from './Input'
 
-type TranslationFormProps = {
-  index: number;
-  onSave?: (translation: Translation) => void;
-  save?: boolean;
-  translation: Translation;
-  updateTranslation: (translation: Translation) => void;
-  updateTranslationInput: (translation: Translation, index: number) => void;
-};
+interface TranslationFormProps {
+  index: number
+  onSave?: (translation: Translation) => void
+  save?: boolean
+  translation: Translation
+  updateTranslation: (translation: Translation) => void
+  updateTranslationInput: (translation: Translation, index: number) => void
+}
 
-const TranslationForm = (props: TranslationFormProps) => {
+function TranslationForm(props: TranslationFormProps) {
   return (
     <div className="flex gap-6">
       <Input
         label="Key"
         value={props.translation.key}
         onChange={(key) => {
-          props.updateTranslationInput({ ...props.translation, key }, props.index);
+          props.updateTranslationInput({ ...props.translation, key }, props.index)
         }}
         onBlur={() => props.updateTranslation(props.translation)}
       />
@@ -30,7 +30,7 @@ const TranslationForm = (props: TranslationFormProps) => {
           labelClassName="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-black font-bold"
           inputClassName="pl-10"
           value={props.translation.fr}
-          onChange={(fr) => props.updateTranslationInput({ ...props.translation, fr }, props.index)}
+          onChange={fr => props.updateTranslationInput({ ...props.translation, fr }, props.index)}
           onBlur={() => props.updateTranslation(props.translation)}
         />
         <Input
@@ -39,7 +39,7 @@ const TranslationForm = (props: TranslationFormProps) => {
           labelClassName="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-black font-bold"
           inputClassName="pl-10"
           value={props.translation.en}
-          onChange={(en) => props.updateTranslationInput({ ...props.translation, en }, props.index)}
+          onChange={en => props.updateTranslationInput({ ...props.translation, en }, props.index)}
           onBlur={() => props.updateTranslation(props.translation)}
         />
       </div>
@@ -50,7 +50,7 @@ const TranslationForm = (props: TranslationFormProps) => {
         </Button>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TranslationForm;
+export default TranslationForm

@@ -1,9 +1,10 @@
-import React from 'react';
-import Container from '../components/base/Container';
-import GetUser, { GetUserProps } from '../components/auth/GetUser';
-import Meta from '../components/base/Meta';
+import React from 'react'
+import Container from '../components/base/Container'
+import type { GetUserProps } from '../components/auth/GetUser'
+import GetUser from '../components/auth/GetUser'
+import Meta from '../components/base/Meta'
 
-const Home = (props: GetUserProps) => {
+function Home(props: GetUserProps) {
   return (
     <>
       <Meta title="Home" />
@@ -14,7 +15,7 @@ const Home = (props: GetUserProps) => {
         {props.user && <p>You are logged in as {props.user.email}</p>}
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default GetUser(Home);
+export default GetUser(Home)

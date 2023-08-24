@@ -1,10 +1,10 @@
-import React from 'react';
-import Container from '../../components/base/Container';
-import TicTacToe from '../../components/games/TicTacToe';
-import H1 from '../../components/base/H1';
-import Meta from '../../components/base/Meta';
+import React from 'react'
+import Container from '../../components/base/Container'
+import TicTacToe from '../../components/games/TicTacToe'
+import H1 from '../../components/base/H1'
+import Meta from '../../components/base/Meta'
 
-const TicTacToePage = () => {
+function TicTacToePage() {
   return (
     <>
       <Meta title="Tic Tac Toe" />
@@ -14,7 +14,7 @@ const TicTacToePage = () => {
         <TicTacToe className="grid-cols-3" height={3} width={3} length={3} auto={false} />
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default TicTacToePage;
+export default TicTacToePage

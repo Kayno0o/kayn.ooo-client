@@ -1,23 +1,23 @@
-import React from 'react';
-import Container from '../../components/base/Container';
-import H1 from '../../components/base/H1';
-import Button from '../../components/base/Button';
-import { useRouter } from 'next/router';
-import { User } from '../../types';
-import UserApi from '../../utils/api/UserApi';
-import IsGranted from '../../components/auth/IsGranted';
-import Meta from '../../components/base/Meta';
+import React from 'react'
+import { useRouter } from 'next/router'
+import Container from '../../components/base/Container'
+import H1 from '../../components/base/H1'
+import Button from '../../components/base/Button'
+import type { User } from '../../types'
+import UserApi from '../../utils/api/UserApi'
+import IsGranted from '../../components/auth/IsGranted'
+import Meta from '../../components/base/Meta'
 
-const AdminPage = ({ user }: { user: User }) => {
-  const { push } = useRouter();
+function AdminPage({ user }: { user: User }) {
+  const { push } = useRouter()
 
   const logout = () => {
-    const userApi = new UserApi();
+    const userApi = new UserApi()
 
     userApi.logoutUser().then(() => {
-      push('/admin/login');
-    });
-  };
+      push('/admin/login')
+    })
+  }
 
   return (
     <>
@@ -39,7 +39,7 @@ const AdminPage = ({ user }: { user: User }) => {
         </div>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default IsGranted(AdminPage, 'ROLE_ADMIN');
+export default IsGranted(AdminPage, 'ROLE_ADMIN')

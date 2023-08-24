@@ -3,7 +3,7 @@ module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   plugins: [
     function ({ addVariant }) {
-      addVariant('all-child', '& *');
+      addVariant('all-child', '& *')
     },
   ],
   theme: {
@@ -14,4 +14,4 @@ module.exports = {
       },
     },
   },
-};
+}

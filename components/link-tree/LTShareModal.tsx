@@ -1,22 +1,22 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import {
   faFacebookF,
   faFacebookMessenger,
   faLinkedinIn,
   faTwitter,
   faWhatsapp,
-} from '@fortawesome/free-brands-svg-icons';
-import { faChevronRight, faEnvelope, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+} from '@fortawesome/free-brands-svg-icons'
+import { faChevronRight, faEnvelope, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
 
-type LTShareModalProps = {
-  close: () => void;
-};
+interface LTShareModalProps {
+  close: () => void
+}
 
-const LTShareModal = (props: LTShareModalProps) => {
-  const url = document.URL;
-  const source = 'kaynooo_linktree_profile_share';
+function LTShareModal(props: LTShareModalProps) {
+  const url = document.URL
+  const source = 'kaynooo_linktree_profile_share'
 
   const shareLinks: Array<{ icon: IconProp; link: string; name: string }> = [
     {
@@ -41,7 +41,7 @@ const LTShareModal = (props: LTShareModalProps) => {
     },
     {
       icon: faFacebookMessenger,
-      link: `https://www.messenger.com/new`,
+      link: 'https://www.messenger.com/new',
       name: 'Messenger',
     },
     {
@@ -49,26 +49,28 @@ const LTShareModal = (props: LTShareModalProps) => {
       link: `mailto:?subject=Check out this page!&body=${url}?utm_source=${source}`,
       name: 'Email',
     },
-  ];
+  ]
 
   return (
     <button
       className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm"
       onClick={props.close}
       onKeyUp={(event) => {
-        if (event.key === 'Escape') props.close();
+        if (event.key === 'Escape')
+          props.close()
       }}
     >
       <button
         className="relative mx-6 w-full max-w-md cursor-default rounded-md bg-white px-6 py-4"
-        onClick={(event) => event.stopPropagation()}
-        onKeyUp={(event) => event.stopPropagation()}
+        onClick={event => event.stopPropagation()}
+        onKeyUp={event => event.stopPropagation()}
       >
         <button
           className="absolute right-4 top-4 mr-2 cursor-pointer p-1"
           onClick={props.close}
           onKeyUp={(event) => {
-            if (event.key === 'Enter') props.close();
+            if (event.key === 'Enter')
+              props.close()
           }}
           aria-label="Close"
         >
@@ -78,7 +80,7 @@ const LTShareModal = (props: LTShareModalProps) => {
         <h2 className="text-center text-2xl font-bold">Share this page</h2>
 
         <div className="mt-8 flex flex-col">
-          {shareLinks.map((shareLink) => (
+          {shareLinks.map(shareLink => (
             <a
               href={shareLink.link}
               target="_blank"
@@ -97,7 +99,7 @@ const LTShareModal = (props: LTShareModalProps) => {
         </div>
       </button>
     </button>
-  );
-};
+  )
+}
 
-export default LTShareModal;
+export default LTShareModal

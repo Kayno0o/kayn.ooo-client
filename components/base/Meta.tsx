@@ -1,27 +1,27 @@
-import Head from 'next/head';
-import React, { useEffect } from 'react';
+import Head from 'next/head'
+import React, { useEffect } from 'react'
 
-type MetaProps = {
-  description?: string;
-  lang?: string;
-  noindex?: boolean;
-  src?: string;
-  title?: string;
-};
+interface MetaProps {
+  description?: string
+  lang?: string
+  noindex?: boolean
+  src?: string
+  title?: string
+}
 
-const Meta = (props: MetaProps) => {
-  const getTitle = React.useCallback(() => (props.title ? `${props.title} - Kayn.ooo` : 'Kayn.ooo'), [props.title]);
+function Meta(props: MetaProps) {
+  const getTitle = React.useCallback(() => (props.title ? `${props.title} - Kayn.ooo` : 'Kayn.ooo'), [props.title])
   const getDesc = React.useCallback(
     () =>
       props.description
         ? props.description
         : 'A website by Kevyn Fyleyssant. A place to share my projects and random things.',
     [props.description],
-  );
+  )
 
   useEffect(() => {
-    document.querySelector('html')?.setAttribute('lang', props.lang || 'en');
-  }, [props.lang, props.noindex]);
+    document.querySelector('html')?.setAttribute('lang', props.lang || 'en')
+  }, [props.lang, props.noindex])
 
   return (
     <Head>
@@ -53,7 +53,7 @@ const Meta = (props: MetaProps) => {
 
       <link rel="icon" href="/favicon.ico" />
     </Head>
-  );
-};
+  )
+}
 
-export default Meta;
+export default Meta

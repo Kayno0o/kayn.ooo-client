@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import UserApi from '../../utils/api/UserApi';
-import { User } from '../../types';
+import React, { useEffect, useState } from 'react'
+import UserApi from '../../utils/api/UserApi'
+import type { User } from '../../types'
 
-export type GetUserProps = {
-  user: User | null;
-};
+export interface GetUserProps {
+  user: User | null
+}
 
-const GetUser = (WrappedComponent: React.ComponentType<any>) => {
+function GetUser(WrappedComponent: React.ComponentType<any>) {
   const AuthWrapper = (props: any) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(null)
 
     useEffect(() => {
-      const userApi = new UserApi();
+      const userApi = new UserApi()
 
       userApi.fetchUser(false).then((user) => {
-        setUser(user);
-      });
-    }, []);
+        setUser(user)
+      })
+    }, [])
 
-    return <WrappedComponent {...props} user={user} />;
-  };
+    return <WrappedComponent {...props} user={user} />
+  }
 
-  return AuthWrapper;
-};
+  return AuthWrapper
+}
 
-export default GetUser;
+export default GetUser

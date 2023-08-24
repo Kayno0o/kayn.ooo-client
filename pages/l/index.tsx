@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import type { ReactElement } from 'react'
+import React from 'react'
 import {
   faDeviantart,
   faInstagram,
@@ -7,22 +8,22 @@ import {
   faRedditAlien,
   faSpotify,
   faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import LTPage from '../../components/link-tree/LTPage';
+} from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import LTPage from '../../components/link-tree/LTPage'
 
-const KaynoooLinkPage = () => {
+function KaynoooLinkPage() {
   return (
     <LTPage
       title="Kevyn Fyleyssant"
       profileSrc="/link-tree/profile.jpeg"
       wallpaperSrc="bg-[url('/link-tree/wallpaper.jpg')]"
       icons={[
-        { href: 'https://instagram.com/kevy.n', icon: faInstagram },
-        { href: 'https://open.spotify.com/user/8fd163ej8oxnv15eryot9m2x7', icon: faSpotify },
-        { href: 'https://www.reddit.com/user/Kaynooo_', icon: faRedditAlien },
-        { href: 'https://www.linkedin.com/in/k%C3%A9vyn-fyleyssant-3947ba1b7/', icon: faLinkedinIn },
-        { href: 'mailto:kevyn.fyleyssant@gmail.com', icon: faEnvelope },
+        { href: 'https://instagram.com/kevy.n', icon: faInstagram, label: 'Instagram' },
+        { href: 'https://open.spotify.com/user/8fd163ej8oxnv15eryot9m2x7', icon: faSpotify, label: 'Spotify' },
+        { href: 'https://www.reddit.com/user/Kaynooo_', icon: faRedditAlien, label: 'Reddit' },
+        { href: 'https://www.linkedin.com/in/k%C3%A9vyn-fyleyssant-3947ba1b7/', icon: faLinkedinIn, label: 'Linkedin' },
+        { href: 'mailto:kevyn.fyleyssant@gmail.com', icon: faEnvelope, label: 'Email' },
       ]}
       links={[
         {
@@ -63,11 +64,11 @@ const KaynoooLinkPage = () => {
         },
       ]}
     />
-  );
-};
+  )
+}
 
 KaynoooLinkPage.getLayout = function getLayout(page: ReactElement) {
-  return page;
-};
+  return page
+}
 
-export default KaynoooLinkPage;
+export default KaynoooLinkPage
