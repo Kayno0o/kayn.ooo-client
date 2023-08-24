@@ -1,29 +1,29 @@
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
-import Button from '../base/Button';
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
+import Button from '../base/Button'
 
-type SimpleBoardGameProps = {
-  auto: boolean;
-  className?: string;
-  grid: Array<Array<number>>;
-  message: string | null;
-  onMouseOverBloc?: (x: number, y: number) => void;
-  onMouseOverCol?: (x: number) => void;
-  place: (x: number, y: number) => void;
-  placeholder: { x: number; y: number };
-  player: number;
+interface SimpleBoardGameProps {
+  auto: boolean
+  className?: string
+  grid: Array<Array<number>>
+  message: string | null
+  onMouseOverBloc?: (x: number, y: number) => void
+  onMouseOverCol?: (x: number) => void
+  place: (x: number, y: number) => void
+  placeholder: { x: number; y: number }
+  player: number
   playerProp: {
     [player: number]: {
-      bloc: any;
-      textColor: string;
-    };
-  };
-  resetGame: () => void;
-  setPlaceholder: (props: { x: number; y: number }) => void;
-};
+      bloc: any
+      textColor: string
+    }
+  }
+  resetGame: () => void
+  setPlaceholder: (props: { x: number; y: number }) => void
+}
 
-const SimpleBoardGame = (props: SimpleBoardGameProps) => (
-  <>
+function SimpleBoardGame(props: SimpleBoardGameProps) {
+  return <>
     <div
       className={twMerge('relative mx-auto flex w-full max-w-lg', props.className)}
       onMouseOut={() => props.setPlaceholder({ x: -2, y: -2 })}
@@ -41,9 +41,9 @@ const SimpleBoardGame = (props: SimpleBoardGameProps) => (
               key={y}
               className={twMerge(
                 'flex aspect-square w-full items-center justify-center border border-white',
-                (props.placeholder.x === -1 || props.placeholder.x === x) &&
-                  (props.placeholder.y === -1 || props.placeholder.y === y) &&
-                  'bg-slate-600',
+                (props.placeholder.x === -1 || props.placeholder.x === x)
+                  && (props.placeholder.y === -1 || props.placeholder.y === y)
+                  && 'bg-slate-600',
               )}
               onMouseOver={() => (props.onMouseOverBloc ? props.onMouseOverBloc(x, y) : null)}
               onFocus={() => (props.onMouseOverBloc ? props.onMouseOverBloc(x, y) : null)}
@@ -72,6 +72,6 @@ const SimpleBoardGame = (props: SimpleBoardGameProps) => (
       </>
     )}
   </>
-);
+}
 
-export default SimpleBoardGame;
+export default SimpleBoardGame

@@ -1,19 +1,20 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-type BaseButtonProps = {
-  children: any;
-  className?: string;
-  loading?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  small?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-};
+interface BaseButtonProps {
+  children: any
+  className?: string
+  loading?: boolean
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  small?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  ariaLabel?: string
+}
 
-const Button = (props: BaseButtonProps) => (
-  <button
+function Button(props: BaseButtonProps) {
+  return <button
     type={props.type}
     className={twMerge(
       'relative w-fit cursor-pointer rounded-full bg-white px-6 py-1 font-bold text-black transition-colors duration-300 hover:bg-amber-300',
@@ -23,6 +24,7 @@ const Button = (props: BaseButtonProps) => (
     )}
     onClick={props.onClick}
     disabled={props.loading}
+    aria-label={props.ariaLabel}
   >
     <div className={props.loading ? 'opacity-0' : ''}>{props.children}</div>
     {props.loading && (
@@ -31,6 +33,6 @@ const Button = (props: BaseButtonProps) => (
       </div>
     )}
   </button>
-);
+}
 
-export default Button;
+export default Button

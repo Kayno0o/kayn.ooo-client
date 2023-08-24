@@ -1,20 +1,20 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-type LTCustomLinkProps = {
-  children: string;
-  className?: string;
-  href: string;
-  icon: { color: string; icon: IconProp };
-  type?: 'copy';
-};
+interface LTCustomLinkProps {
+  children: string
+  className?: string
+  href: string
+  icon: { color: string; icon: IconProp }
+  type?: 'copy'
+}
 
-const LTCustomLink = (props: LTCustomLinkProps) => {
-  const [copied, setCopied] = useState<boolean>(false);
+function LTCustomLink(props: LTCustomLinkProps) {
+  const [copied, setCopied] = useState<boolean>(false)
 
   return (
     <Link
@@ -32,13 +32,13 @@ const LTCustomLink = (props: LTCustomLinkProps) => {
       )}
       onClick={(e) => {
         if (props.type === 'copy') {
-          e.preventDefault();
-          setCopied(true);
-          navigator.clipboard.writeText(props.href);
+          e.preventDefault()
+          setCopied(true)
+          navigator.clipboard.writeText(props.href)
 
           setTimeout(() => {
-            setCopied(false);
-          }, 3000);
+            setCopied(false)
+          }, 3000)
         }
       }}
     >
@@ -52,7 +52,7 @@ const LTCustomLink = (props: LTCustomLinkProps) => {
         {props.children} {copied && 'copié !'}
       </span>
     </Link>
-  );
-};
+  )
+}
 
-export default LTCustomLink;
+export default LTCustomLink

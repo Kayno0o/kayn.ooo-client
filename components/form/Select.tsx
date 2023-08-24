@@ -1,29 +1,29 @@
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-type SelectProps = {
-  className?: string;
-  label: string;
-  onBlur?: (value: string) => void;
-  onChange?: (value: string) => void;
-  options: Array<string>;
-  placeholder?: string;
-  required?: boolean;
-  resetError?: () => void;
-  type?: string;
-  value: string;
-};
+interface SelectProps {
+  className?: string
+  label: string
+  onBlur?: (value: string) => void
+  onChange?: (value: string) => void
+  options: Array<string>
+  placeholder?: string
+  required?: boolean
+  resetError?: () => void
+  type?: string
+  value: string
+}
 
-const Select = (props: SelectProps) => {
+function Select(props: SelectProps) {
   const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    props.onChange && props.onChange(event.target.value);
-    props.resetError && props.resetError();
-  };
+    props.onChange && props.onChange(event.target.value)
+    props.resetError && props.resetError()
+  }
 
   const onBlur = (event: React.FocusEvent<HTMLSelectElement>) => {
-    props.onBlur && props.onBlur(event.target.value);
-    props.resetError && props.resetError();
-  };
+    props.onBlur && props.onBlur(event.target.value)
+    props.resetError && props.resetError()
+  }
 
   return (
     <div className={twMerge('flex w-full flex-col gap-1', props.className)}>
@@ -39,14 +39,14 @@ const Select = (props: SelectProps) => {
         onChange={onChange}
         placeholder={props.placeholder}
       >
-        {props.options.map((option) => (
+        {props.options.map(option => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
       </select>
     </div>
-  );
-};
+  )
+}
 
-export default Select;
+export default Select

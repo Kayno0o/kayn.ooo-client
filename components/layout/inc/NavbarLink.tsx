@@ -1,17 +1,18 @@
-import Link from 'next/link';
-import React, { ReactElement } from 'react';
+import Link from 'next/link'
+import type { ReactElement } from 'react'
+import React from 'react'
 
-type NavbarLinkProps = {
-  children: ReactElement | string;
-  href: string;
-};
+interface NavbarLinkProps {
+  children: ReactElement | string
+  href: string
+}
 
-const NavbarLink = (props: NavbarLinkProps) => {
+function NavbarLink(props: NavbarLinkProps) {
   return (
     <Link className="font-bold" href={props.href}>
       {props.children}
     </Link>
-  );
-};
+  )
+}
 
-export default NavbarLink;
+export default NavbarLink

@@ -1,34 +1,35 @@
-import React, { useState } from 'react';
-import LTIconLink from './LTIconLink';
-import LTCustomLink from './LTCustomLink';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import LTShareModal from './LTShareModal';
-import H1 from '../base/H1';
-import Meta from '../base/Meta';
-import { twMerge } from 'tailwind-merge';
+import React, { useState } from 'react'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { twMerge } from 'tailwind-merge'
+import H1 from '../base/H1'
+import Meta from '../base/Meta'
+import LTShareModal from './LTShareModal'
+import LTCustomLink from './LTCustomLink'
+import LTIconLink from './LTIconLink'
 
-type LTPageProps = {
+interface LTPageProps {
   icons: Array<{
-    href: string;
-    icon: IconProp;
-  }>;
+    href: string
+    icon: IconProp
+    label?: string
+  }>
   links: Array<{
-    children: string;
-    className?: string;
-    href: string;
-    icon: { color: string; icon: IconProp };
-    type?: 'copy';
-  }>;
-  profileSrc: string;
-  title: string;
-  wallpaperSrc: string;
-};
+    children: string
+    className?: string
+    href: string
+    icon: { color: string; icon: IconProp }
+    type?: 'copy'
+  }>
+  profileSrc: string
+  title: string
+  wallpaperSrc: string
+}
 
-const LTPage = (props: LTPageProps) => {
-  const [shareModal, setShareModal] = useState(false);
+function LTPage(props: LTPageProps) {
+  const [shareModal, setShareModal] = useState(false)
 
   return (
     <>
@@ -42,9 +43,10 @@ const LTPage = (props: LTPageProps) => {
         <button
           className="absolute left-6 top-6 z-10 flex cursor-pointer flex-col items-center text-white md:left-12 md:top-12"
           onClick={() => setShareModal(true)}
+          aria-label="Share"
         >
           <FontAwesomeIcon className="h-10" icon={faShareAlt} />
-          <span className="hidden text-lg font-black  md:inline-block">Share</span>
+          <span className="hidden text-lg font-black md:inline-block">Share</span>
         </button>
 
         {shareModal && <LTShareModal close={() => setShareModal(false)} />}
@@ -59,7 +61,7 @@ const LTPage = (props: LTPageProps) => {
 
             <div className="flex h-8 gap-6">
               {props.icons.map((icon, index) => (
-                <LTIconLink href={icon.href} key={index} icon={icon.icon} />
+                <LTIconLink href={icon.href} key={index} icon={icon.icon} ariaLabel={icon.label} />
               ))}
             </div>
 
@@ -84,7 +86,7 @@ const LTPage = (props: LTPageProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default LTPage;
+export default LTPage

@@ -1,41 +1,41 @@
-import React from 'react';
+import React from 'react'
 
-import Container from '../../components/base/Container';
-import Form from '../../components/form/Form';
-import Input from '../../components/form/Input';
-import H1 from '../../components/base/H1';
-import UserApi from '../../utils/api/UserApi';
-import { useRouter } from 'next/router';
-import Meta from '../../components/base/Meta';
+import { useRouter } from 'next/router'
+import Container from '../../components/base/Container'
+import Form from '../../components/form/Form'
+import Input from '../../components/form/Input'
+import H1 from '../../components/base/H1'
+import UserApi from '../../utils/api/UserApi'
+import Meta from '../../components/base/Meta'
 
-const AdminLoginPage = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [error, setError] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
+function AdminLoginPage() {
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [error, setError] = React.useState('')
+  const [loading, setLoading] = React.useState(false)
 
-  const { push } = useRouter();
+  const { push } = useRouter()
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    setError('');
-    setLoading(true);
+    setError('')
+    setLoading(true)
 
-    const api = new UserApi();
+    const api = new UserApi()
 
     api
       .loginUser({ email, password })
       .then(() => {
-        push('/admin');
+        push('/admin')
       })
       .catch((error) => {
-        setError(error.error);
+        setError(error.error)
       })
       .finally(() => {
-        setLoading(false);
-      });
-  };
+        setLoading(false)
+      })
+  }
 
   return (
     <>
@@ -67,7 +67,7 @@ const AdminLoginPage = () => {
         </Form>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default AdminLoginPage;
+export default AdminLoginPage
