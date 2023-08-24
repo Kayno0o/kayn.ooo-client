@@ -1,4 +1,4 @@
-import process from 'node:process'
+import process from 'process'
 import type { Identifiable } from '../../types'
 
 export default class Api<T extends Identifiable> {
