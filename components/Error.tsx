@@ -20,7 +20,7 @@ function Error(props: ErrorProps) {
         Error <span className="text-red-400">{props.code}</span>
       </H1>
 
-      <Image fill={true} width={512} className="w-full max-w-lg" src={props.src} alt={props.alt} />
+      <img width="512px" className="w-full max-w-lg" src={props.src} alt={props.alt} />
 
       <p>{props.children}</p>
     </Container>
