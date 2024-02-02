@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Container from '../components/base/Container'
 import H1 from '../components/base/H1'
 import Meta from './base/Meta'
@@ -7,6 +8,7 @@ interface ErrorProps {
   children: React.ReactNode
   code: string
   src: string
+  alt: string
 }
 
 function Error(props: ErrorProps) {
@@ -18,7 +20,7 @@ function Error(props: ErrorProps) {
         Error <span className="text-red-400">{props.code}</span>
       </H1>
 
-      <img className="w-full max-w-lg" src={props.src} alt="Black cat looking around" />
+      <Image width={512} className="w-full max-w-lg" src={props.src} alt={props.alt} />
 
       <p>{props.children}</p>
     </Container>

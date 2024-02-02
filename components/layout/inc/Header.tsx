@@ -20,9 +20,11 @@ function Header() {
           <FontAwesomeIcon icon={burger ? faTimes : faBurger} className="h-8 w-8" />
         </button>
 
-        <Link href="/" className="text-2xl font-bold">
-          Kayn.ooo
-        </Link>
+        <h1>
+          <Link href="/" className="text-2xl font-bold">
+            Kayn.ooo
+          </Link>
+        </h1>
 
         <nav
           className={twMerge(
@@ -41,6 +43,9 @@ function Header() {
           </BaseLink>
           <BaseLink onClick={() => setBurger(false)} href="/contact">
             Contact
+          </BaseLink>
+          <BaseLink onClick={() => setBurger(false)} href="/r">
+            R ?
           </BaseLink>
 
           <div className="grow" />

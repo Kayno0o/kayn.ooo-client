@@ -46,27 +46,31 @@ function LTShareModal(props: LTShareModalProps) {
     },
     {
       icon: faEnvelope,
-      link: `mailto:?subject=Check out this page!&body=${url}?utm_source=${source}`,
+      link: `mailto:?subject=Regarde cette page de fou !&body=${url}?utm_source=${source}`,
       name: 'Email',
     },
   ]
 
   return (
-    <button
+    <div
       className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      role="button"
+      tabIndex={0}
       onClick={props.close}
       onKeyUp={(event) => {
-        if (event.key === 'Escape')
+        if (event.key === 'Enter')
           props.close()
       }}
     >
-      <button
+      <div
         className="relative mx-6 w-full max-w-md cursor-default rounded-md bg-white px-6 py-4"
+        role="button"
+        tabIndex={0}
         onClick={event => event.stopPropagation()}
         onKeyUp={event => event.stopPropagation()}
       >
         <button
-          className="absolute right-4 top-4 mr-2 cursor-pointer p-1"
+          className="absolute right-4 top-4 mr-2 cursor-pointer p-1 hover:rotate-45 transition-transform rotate-0 duration-300"
           onClick={props.close}
           onKeyUp={(event) => {
             if (event.key === 'Enter')
@@ -97,8 +101,8 @@ function LTShareModal(props: LTShareModalProps) {
             </a>
           ))}
         </div>
-      </button>
-    </button>
+      </div>
+    </div>
   )
 }
 

@@ -10,6 +10,8 @@ interface MetaProps {
 }
 
 function Meta(props: MetaProps) {
+  const [currentUrl, setCurrentUrl] = React.useState<string>('')
+
   const getTitle = React.useCallback(() => (props.title ? `${props.title} - Kayn.ooo` : 'Kayn.ooo'), [props.title])
   const getDesc = React.useCallback(
     () =>
@@ -22,6 +24,10 @@ function Meta(props: MetaProps) {
   useEffect(() => {
     document.querySelector('html')?.setAttribute('lang', props.lang || 'en')
   }, [props.lang, props.noindex])
+
+  React.useEffect(() => {
+    setCurrentUrl(document.location.origin + document.location.pathname)
+  })
 
   return (
     <Head>
@@ -52,7 +58,11 @@ function Meta(props: MetaProps) {
       <meta name="twitter:image" content={props.src || 'https://kayn.ooo/images/og-image.png'} />
 
       <link rel="icon" href="/favicon.ico" />
-    </Head>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+      <link rel="canonical" href={currentUrl} />
+    </Head >
   )
 }
 

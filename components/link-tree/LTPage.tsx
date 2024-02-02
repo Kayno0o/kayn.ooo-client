@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { twMerge } from 'tailwind-merge'
+import Image from 'next/image'
 import H1 from '../base/H1'
 import Meta from '../base/Meta'
 import LTShareModal from './LTShareModal'
@@ -33,7 +34,7 @@ function LTPage(props: LTPageProps) {
 
   return (
     <>
-      <Meta title={props.title} description={`Linktree for ${props.title}`} src={props.profileSrc} />
+      <Meta title={`${props.title} mes lieux réseaux sociaux`} description={`Liste des liens de réseaux sociaux de ${props.title}. Instagram, Spotify, ... Et bien d'autres liens.`} src={props.profileSrc} />
 
       <div className="relative flex min-h-screen justify-center">
         <div className={twMerge('absolute inset-0 bg-cover bg-center', props.wallpaperSrc)} />
@@ -54,7 +55,7 @@ function LTPage(props: LTPageProps) {
         <div className="relative mx-6 flex h-full min-h-screen w-full max-w-2xl flex-col px-6 py-12">
           <div className="flex w-full flex-[1] flex-col items-center justify-between gap-10">
             <div className="flex w-full flex-col items-center gap-8">
-              <img src={props.profileSrc} alt="profile" className="w-40 rounded-full border-2 border-white shadow-md" />
+              <Image src={props.profileSrc} width={160} height={160} alt="profile" className="w-40 rounded-full border-2 border-white shadow-md" />
 
               <H1 className="text-center text-white">{props.title}</H1>
             </div>
@@ -65,7 +66,7 @@ function LTPage(props: LTPageProps) {
               ))}
             </div>
 
-            <div className="flex w-full flex-[1] flex-col gap-6">
+            <div className="flex w-full flex-[1] flex-col gap-4">
               {props.links.map((link, index) => (
                 <LTCustomLink
                   key={index}

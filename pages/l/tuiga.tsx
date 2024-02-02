@@ -14,8 +14,8 @@ function TuigaLinkPage() {
   return (
     <LTPage
       title="Noa Aubert"
-      profileSrc="/link-tree/tuiga_profile.jpg"
-      wallpaperSrc="bg-[url('/link-tree/tuiga_wallpaper.jpg')]"
+      profileSrc="/link-tree/tuiga_profile.webp"
+      wallpaperSrc="bg-[url('/link-tree/tuiga_wallpaper.webp')]"
       icons={[
         { href: instagram, icon: faInstagram, label: 'Instagram' },
         { href: spotify, icon: faSpotify, label: 'Spotify' },
