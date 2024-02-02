@@ -55,7 +55,7 @@ function LTPage(props: LTPageProps) {
         <div className="relative mx-6 flex h-full min-h-screen w-full max-w-2xl flex-col px-6 py-12">
           <div className="flex w-full flex-[1] flex-col items-center justify-between gap-10">
             <div className="flex w-full flex-col items-center gap-8">
-              <Image src={props.profileSrc} width={160} height={160} alt="profile" className="w-40 rounded-full border-2 border-white shadow-md" />
+              <Image src={props.profileSrc} width={160} height={160} alt="profile" priority={true} className="w-40 rounded-full border-2 border-white shadow-md" />
 
               <H1 className="text-center text-white">{props.title}</H1>
             </div>
