@@ -6,7 +6,7 @@ function PageR() {
   const router = useRouter()
 
   React.useEffect(() => {
-    router.push('https://youtu.be/dQw4w9WgXcQ')
+    router.push('https://youtu.be/hvL1339luv0')
   })
 
   return <>
