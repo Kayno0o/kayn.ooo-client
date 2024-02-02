@@ -22,7 +22,7 @@ function Header() {
 
         <h1>
           <Link href="/" className="text-2xl font-bold">
-            Kayn.ooo
+            Kaynooo.xyz
           </Link>
         </h1>
 

@@ -12,7 +12,7 @@ interface MetaProps {
 function Meta(props: MetaProps) {
   const [currentUrl, setCurrentUrl] = React.useState<string>('')
 
-  const getTitle = React.useCallback(() => (props.title ? `${props.title} - Kayn.ooo` : 'Kayn.ooo'), [props.title])
+  const getTitle = React.useCallback(() => (props.title ? `${props.title} - Kaynooo.xyz` : 'Kaynooo.xyz'), [props.title])
   const getDesc = React.useCallback(
     () =>
       props.description
@@ -44,9 +44,9 @@ function Meta(props: MetaProps) {
       <meta property="og:description" content={getDesc()} />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kayn.ooo" />
-      <meta property="og:site_name" content="Kayn.ooo" />
-      <meta property="og:image" content={props.src || 'https://kayn.ooo/images/og-image.png'} />
+      <meta property="og:url" content="https://kaynooo.xyz" />
+      <meta property="og:site_name" content="Kaynooo.xyz" />
+      <meta property="og:image" content={props.src || 'https://kaynooo.xyz/images/og-image.png'} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
 
@@ -55,7 +55,7 @@ function Meta(props: MetaProps) {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@kayn_ooo" />
       <meta name="twitter:creator" content="@kayn_ooo" />
-      <meta name="twitter:image" content={props.src || 'https://kayn.ooo/images/og-image.png'} />
+      <meta name="twitter:image" content={props.src || 'https://kaynooo.xyz/images/og-image.png'} />
 
       <link rel="icon" href="/favicon.ico" />
 

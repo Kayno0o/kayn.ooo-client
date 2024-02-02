@@ -81,7 +81,7 @@ function LTPage(props: LTPageProps) {
             </div>
 
             <Link href="/" className="mt-auto justify-self-end text-2xl font-bold text-slate-200">
-              <h2>Kayn.ooo</h2>
+              <h2>Kaynooo.xyz</h2>
             </Link>
           </div>
         </div>
