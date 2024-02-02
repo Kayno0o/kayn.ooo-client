@@ -7,7 +7,6 @@ interface SelectProps {
   onBlur?: (value: string) => void
   onChange?: (value: string) => void
   options: Array<string>
-  placeholder?: string
   required?: boolean
   resetError?: () => void
   type?: string
@@ -37,7 +36,6 @@ function Select(props: SelectProps) {
         value={props.value}
         onBlur={onBlur}
         onChange={onChange}
-        placeholder={props.placeholder}
       >
         {props.options.map(option => (
           <option key={option} value={option}>
