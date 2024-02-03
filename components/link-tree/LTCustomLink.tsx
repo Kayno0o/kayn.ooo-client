@@ -9,7 +9,7 @@ interface LTCustomLinkProps {
   children: string
   className?: string
   href: string
-  icon: { color: string; icon: IconProp }
+  icon: { color: string, icon: IconProp }
   type?: 'copy'
 }
 
@@ -49,7 +49,9 @@ function LTCustomLink(props: LTCustomLinkProps) {
       />
 
       <span className="text-center">
-        {props.children} {copied && 'copié !'}
+        {props.children}
+        {' '}
+        {copied && 'copié !'}
       </span>
     </Link>
   )

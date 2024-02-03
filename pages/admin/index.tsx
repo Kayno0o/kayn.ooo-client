@@ -31,7 +31,10 @@ function AdminPage({ user }: { user: User }) {
           </Button>
         </div>
 
-        <p>Logged in as {user.email}</p>
+        <p>
+          Logged in as
+          {user.email}
+        </p>
 
         <div className="flex flex-wrap gap-8">
           <Button onClick={() => push('/admin/users')}>Users</Button>

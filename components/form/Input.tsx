@@ -30,7 +30,9 @@ function Input(props: InputProps) {
     <div className={twMerge('flex w-full flex-col gap-1', props.className)}>
       {props.label && (
         <label htmlFor={props.label} className={twMerge('text-md', props.labelClassName)}>
-          {props.label} {props.required && <span className="font-bold text-red-500">*</span>}
+          {props.label}
+          {' '}
+          {props.required && <span className="font-bold text-red-500">*</span>}
         </label>
       )}
 

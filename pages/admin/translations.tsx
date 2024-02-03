@@ -111,7 +111,11 @@ function TranslationsPage() {
 
         {error && (
           <p>
-            Error loading translations: {error.status} {error.error}
+            Error loading translations:
+            {' '}
+            {error.status}
+            {' '}
+            {error.error}
           </p>
         )}
       </Container>

@@ -12,7 +12,12 @@ function Home(props: GetUserProps) {
       <Container className="flex flex-col gap-8">
         <h1 className="text-center text-2xl">Full-stack web developer</h1>
 
-        {props.user && <p>You are logged in as {props.user.email}</p>}
+        {props.user && (
+          <p>
+            You are logged in as
+            {props.user.email}
+          </p>
+        )}
       </Container>
     </>
   )

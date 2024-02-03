@@ -8,9 +8,9 @@ interface BoardProps {
   grid: Grid<any>
   onBlocClick?: (x: number, y: number) => void
   onMouseOverBloc?: (x: number, y: number) => void
-  placeholder?: { x: number; y: number }
+  placeholder?: { x: number, y: number }
   popup?: string
-  setPlaceholder?: (props: { x: number; y: number }) => void
+  setPlaceholder?: (props: { x: number, y: number }) => void
   statesClassFormatter?: (x: number, y: number) => string
 }
 
@@ -30,9 +30,9 @@ function Board(props: BoardProps) {
                 'relative flex aspect-square w-full items-center justify-center border border-white',
                 props.statesClassFormatter && props.statesClassFormatter(x, y),
                 props.placeholder
-                  && (props.placeholder.x === -1 || props.placeholder.x === x)
-                  && (props.placeholder.y === -1 || props.placeholder.y === y)
-                  && 'bg-slate-600',
+                && (props.placeholder.x === -1 || props.placeholder.x === x)
+                && (props.placeholder.y === -1 || props.placeholder.y === y)
+                && 'bg-slate-600',
               )}
               onMouseOver={() => props.onMouseOverBloc && props.onMouseOverBloc(x, y)}
               onFocus={() => props.onMouseOverBloc && props.onMouseOverBloc(x, y)}

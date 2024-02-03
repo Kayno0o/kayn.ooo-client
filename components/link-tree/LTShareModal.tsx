@@ -18,7 +18,7 @@ function LTShareModal(props: LTShareModalProps) {
   const url = document.URL
   const source = 'kaynooo_linktree_profile_share'
 
-  const shareLinks: Array<{ icon: IconProp; link: string; name: string }> = [
+  const shareLinks: Array<{ icon: IconProp, link: string, name: string }> = [
     {
       icon: faFacebookF,
       link: `https://www.facebook.com/sharer.php?u=${url}?utm_source=${source}`,

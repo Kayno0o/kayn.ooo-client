@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { twMerge } from 'tailwind-merge'
-import Image from 'next/image'
 import H1 from '../base/H1'
 import Meta from '../base/Meta'
 import LTShareModal from './LTShareModal'
@@ -21,7 +20,7 @@ interface LTPageProps {
     children: string
     className?: string
     href: string
-    icon: { color: string; icon: IconProp }
+    icon: { color: string, icon: IconProp }
     type?: 'copy'
   }>
   profileSrc: string

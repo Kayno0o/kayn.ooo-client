@@ -27,7 +27,9 @@ function Select(props: SelectProps) {
   return (
     <div className={twMerge('flex w-full flex-col gap-1', props.className)}>
       <label htmlFor={props.label}>
-        {props.label} {props.required && <span className="font-bold text-red-500">*</span>}
+        {props.label}
+        {' '}
+        {props.required && <span className="font-bold text-red-500">*</span>}
       </label>
 
       <select

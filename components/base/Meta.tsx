@@ -62,7 +62,7 @@ function Meta(props: MetaProps) {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
 
       <link rel="canonical" href={currentUrl} />
-    </Head >
+    </Head>
   )
 }
 
